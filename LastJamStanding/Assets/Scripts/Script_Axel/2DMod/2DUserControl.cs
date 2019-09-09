@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace UnityStandardAssets._2D
 {
-    [RequireComponent(typeof (PlatformerCharacter2D))]
-    public class Platformer2DUserControl : MonoBehaviour
+    [RequireComponent(typeof (Character2D))]
+    public class UserControl : MonoBehaviour
     {
-        private PlatformerCharacter2D m_Character;
+        private Character2D m_Character;
 
 
         private void Awake()
         {
-            m_Character = GetComponent<PlatformerCharacter2D>();
+            m_Character = GetComponent<Character2D>();
         }
 
 
