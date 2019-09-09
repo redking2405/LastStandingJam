@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Rewired;
 
 public class Hunter : MonoBehaviour
 {
@@ -13,13 +14,22 @@ public class Hunter : MonoBehaviour
     public float aimingFactor;
     private bool canMove;
     private bool canShoot;
-    private bool isAiming;
+    public bool isAiming;
+    public Player player;
+    public int playerID;
     Vector2 position;
 
+
+    private void Awake()
+    {
+        player = ReInput.players.GetPlayer(playerID);
+    }
     // Start is called before the first frame update
     void Start()
     {
         originalTimeMoving = timeMoving;
+        canMove = true;
+        canShoot = true;
     }
 
     private void FixedUpdate()
@@ -41,7 +51,22 @@ public class Hunter : MonoBehaviour
         }
         timeMoving -= Time.deltaTime;
 
+        if(canShoot && player.GetButtonDown("Fire"))
+        {
+            Shoot();
+        }
 
+        if (player.GetButton("Modifier"))
+        {
+            isAiming = true;
+        }
+        else isAiming = false;
+
+    }
+
+    public void Shoot()
+    {
+        Debug.Log("Pan!");
     }
 
     IEnumerator WaitForBreath()
@@ -56,20 +81,26 @@ public class Hunter : MonoBehaviour
     public void Move()
     {
         position = new Vector2(transform.position.x, transform.position.y);
-        if (isAiming)
+
+        if(player.GetAxis("Move Horizontaly") !=0 || player.GetAxis("Move Verticaly") != 0)
         {
-            position.x = (Input.GetAxis("Horizontal") * speed * Time.deltaTime)/aimingFactor;
-            position.y = (Input.GetAxis("Vertical") * speed * Time.deltaTime)/aimingFactor;
+            if (isAiming)
+            {
+                position.x += (player.GetAxis("Move Horizontaly") * speed *Time.deltaTime) * aimingFactor;
+                position.y += (player.GetAxis("Move Verticaly") * speed *Time.deltaTime) * aimingFactor;
+            }
+
+
+            else
+            {
+                position.x += (player.GetAxis("Move Horizontaly") * speed *Time.deltaTime);
+                position.y += (player.GetAxis("Move Verticaly") * speed*Time.deltaTime);
+            }
+
+            transform.position = new Vector3(position.x, position.y, transform.position.z);
         }
+
         
-
-        else
-        {
-            position.x = (Input.GetAxis("Horizontal") * speed * Time.deltaTime);
-            position.y = (Input.GetAxis("Vertical") * speed * Time.deltaTime);
-        }
-
-        transform.position = new Vector3(position.x, position.y, transform.position.z);
 
     }
 }

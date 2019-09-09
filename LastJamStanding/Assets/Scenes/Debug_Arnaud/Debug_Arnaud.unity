@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057422423}
   - component: {fileID: 1057422422}
+  - component: {fileID: 1057422424}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
@@ -195,11 +196,198 @@ Transform:
   m_GameObject: {fileID: 1057422421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057422424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057422421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05cb9da9502998f4a8d82295d0061c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  timeMoving: 10
+  timeStopping: 2
+  aimingFactor: 0.5
+  isAiming: 0
+  playerID: 0
+--- !u!1001 &1250083014
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4996122102939046123, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_Name
+      value: Rewired Input Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.6961217
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.082105055
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.runInEditMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_windowsStandalone.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_linuxStandalone.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_osxStandalone.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_windows8Store.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_windowsUWP.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_iOS.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_tvOS.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_android.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_ps3.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_ps4.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_psVita.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_xbox360.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_xboxOne.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_wii.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_wiiu.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_switch.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_webGL.disableKeyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.windowsStandalonePrimaryInputSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.useXInput
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c38848481572d8a4c999b8c12d097527, type: 3}
 --- !u!1 &1539472582
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +399,7 @@ GameObject:
   - component: {fileID: 1539472585}
   - component: {fileID: 1539472584}
   - component: {fileID: 1539472583}
+  - component: {fileID: 1539472586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -283,3 +472,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1539472586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539472582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83cea4a71271434eb244465130e0fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 1057422424}
+  player2: {fileID: 0}
