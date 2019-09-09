@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityStandardAssets._2D;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -9,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Hunter player1;
     public Hunter player2;
     private Player player;
-
+    private GameObject nPcClone = new GameObject("StartClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
 
     private void Awake()
     {
@@ -43,6 +44,18 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        InstantiateCrowd();
+    }
+
+    void InstantiateCrowd()
+    {
+        int count = 10;
+        int xMax = 20, yMax = 10;
+        for (int i = 0; i < count; i++)
+        {
+            Vector2 r_Postition = new Vector2(Random.Range(0, xMax), Random.Range(0, yMax));
+            Instantiate(nPcClone, r_Postition, Quaternion.identity, transform);
+        }
     }
 
     void Update()
