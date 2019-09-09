@@ -11,7 +11,8 @@ namespace UnityStandardAssets._2D
         private Character2D m_NPC;
 
         // Randomizers
-        float r_movestop, r_speed, r_orientation;
+        float r_movestop, r_speed;
+        Vector2 r_orientation;
         bool obstacleReached = false;
         bool moving = false;
 
@@ -69,6 +70,7 @@ namespace UnityStandardAssets._2D
             moving = !moving;
             r_movestop = Random.Range(0.5f, 5);
             r_speed = Random.Range(1, 3);
+            r_orientation = RotateVector(Vector2.right, orientation);
         }
 
         void SetRotationRangeUponEncounter(List<Collider2D>_colliderResults)
@@ -76,6 +78,14 @@ namespace UnityStandardAssets._2D
             Vector2 obstacleToCharacterNormal = Vector2.Perpendicular(_colliderResults[0].transform.position - transform.position);
             float minimumAngle = Vector2.Angle(Vector2.right, obstacleToCharacterNormal);
             SetNextMoveState(Random.Range(minimumAngle, (minimumAngle + 180) % 360));
+        }
+
+        public Vector2 RotateVector(Vector2 v, float angle)
+        {
+            float radian = angle * Mathf.Deg2Rad;
+            float _x = v.x * Mathf.Cos(radian) - v.y * Mathf.Sin(radian);
+            float _y = v.x * Mathf.Sin(radian) + v.y * Mathf.Cos(radian);
+            return new Vector2(_x, _y);
         }
     }
 }
