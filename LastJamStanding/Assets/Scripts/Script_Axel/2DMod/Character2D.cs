@@ -61,5 +61,3 @@ namespace UnityStandardAssets._2D
         }
     }
 }
-
-        public void Move(float move, float direction)
