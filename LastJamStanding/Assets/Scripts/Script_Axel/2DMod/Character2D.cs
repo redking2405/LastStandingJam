@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UnityStandardAssets._2D
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class Character2D : MonoBehaviour
     {
         [SerializeField] private float m_MaxSpeed = 10f; // The fastest the player can travel in the x axis.
@@ -10,44 +11,41 @@ namespace UnityStandardAssets._2D
         
         const float k_DetectionRadius = .2f; // Radius of the overlap circle to determine if [close to an obstacle? (leonard's change)]
         private Animator m_Anim;            // Reference to the player's animator component.
-        private Rigidbody2D m_Rigidbody2D;
+        [SerializeField] private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-
+        public Vector2 pos;
+        public Color[] color = { Color.blue, Color.green, Color.red, Color.yellow };
+        public Color currentColor;
         private void Awake()
         {
             // Setting up references.
-            m_Anim = GetComponent<Animator>();
+            //m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+
+            pos = Vector2.zero;
         }
-
-
+        public Color SetColor(Color color)
+        {
+            GetComponent<SpriteRenderer>().color = color;
+            return currentColor = color;
+        }
         private void FixedUpdate()
         {
             // Set the vertical animation
-            m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+            //m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
 
-        public void Move(float move, Vector2 direction)
+        public void Move(float move, float direction)
         {
             // The Speed animator parameter is set to the absolute value of the horizontal input.
-            m_Anim.SetFloat("Speed", Mathf.Abs(move));
-
+            //m_Anim.SetFloat("Speed", Mathf.Abs(move));
+            pos.x =  Mathf.Cos(Mathf.Deg2Rad * direction);
+            pos.y =  Mathf.Sin(Mathf.Deg2Rad * direction);
             // Move the character
-            m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
-
-            // If the input is moving the player right and the player is facing left...
-            if (move > 0 && !m_FacingRight)
-            {
-                // ... flip the player.
-                Flip();
-            }
-                // Otherwise if the input is moving the player left and the player is facing right...
-            else if (move < 0 && m_FacingRight)
-            {
-                // ... flip the player.
-                Flip();
-            }
+            m_Rigidbody2D.velocity = new Vector2(pos.x * move * m_MaxSpeed, pos.y * move * m_MaxSpeed);
+            print(0);
+            
         }
 
 
@@ -63,3 +61,5 @@ namespace UnityStandardAssets._2D
         }
     }
 }
+
+        public void Move(float move, float direction)

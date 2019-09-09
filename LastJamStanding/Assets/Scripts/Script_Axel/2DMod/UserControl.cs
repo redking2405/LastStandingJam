@@ -9,10 +9,12 @@ namespace UnityStandardAssets._2D
     {
         private Character2D m_Character;
         public Player player;
-
+        public GameObject prefab;
+        public GameObject instance;
         private void Awake()
         {
-            player = ReInput.players.GetPlayer(0);
+            player = ReInput.players.GetPlayer("Player1");
+
             m_Character = GetComponent<Character2D>();
         }
 
@@ -23,10 +25,32 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            Vector2 h = new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical"));
-
+            Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+            //Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
+            //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
-            //m_Character.Move(h.normalized,);
+            // m_Character.Move(h);
+            m_Character.Move(h.magnitude,Vector2.SignedAngle(Vector2.right,h));
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
+                instance.GetComponent<Character2D>().SetColor(m_Character.color[0]);
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
+                instance.GetComponent<Character2D>().SetColor(m_Character.color[1]);
+            }
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
+                instance.GetComponent<Character2D>().SetColor(m_Character.color[2]);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
+                instance.GetComponent<Character2D>().SetColor(m_Character.color[3]);
+            }
         }
     }
 }
