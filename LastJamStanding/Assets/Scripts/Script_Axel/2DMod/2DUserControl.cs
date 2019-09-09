@@ -7,7 +7,6 @@ namespace UnityStandardAssets._2D
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D m_Character;
-        private bool m_Jump;
 
 
         private void Awake()
@@ -24,11 +23,9 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            bool crouch = Input.GetKey(KeyCode.LeftControl);
-            float h = // REWIRED. GetAxis("Horizontal");
+            //float h = // REWIRED. GetAxis("Horizontal");
             // Pass all parameters to the character control script.
-             // m_Character.Move(h, crouch, m_Jump);
-            m_Jump = false;
+             // m_Character.Move(h);
         }
     }
 }
