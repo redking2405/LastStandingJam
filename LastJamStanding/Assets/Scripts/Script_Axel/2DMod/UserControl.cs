@@ -8,7 +8,6 @@ namespace UnityStandardAssets._2D
     {
         private Character2D m_Character;
 
-
         private void Awake()
         {
             m_Character = GetComponent<Character2D>();
