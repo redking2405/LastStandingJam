@@ -10,10 +10,8 @@ public class GameManager : Singleton<GameManager>
     public Hunter player1;
     public Hunter player2;
     private Player player;
-    private GameObject nPcClone; 
-    public int count;
-    public int xMax;
-    public int yMax;
+
+    GameObject nPcClone, playerClone;
 
     private void Awake()
     {
@@ -27,6 +25,7 @@ public class GameManager : Singleton<GameManager>
         }
 
         nPcClone = new GameObject("StartClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
+        playerClone = new GameObject("PlayerClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
     }
 
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
@@ -54,13 +53,20 @@ public class GameManager : Singleton<GameManager>
 
     void InstantiateCrowd()
     {
-        
-        
+        int count = 10;
+        int yMax = (int)Camera.main.orthographicSize, xMax = (int)(Camera.main.aspect * yMax);
         for (int i = 0; i < count; i++)
         {
             Vector2 r_Postition = new Vector2(Random.Range(0, xMax), Random.Range(0, yMax));
             Instantiate(nPcClone, r_Postition, Quaternion.identity, transform);
         }
+    }
+
+    void InstantiateClone(Vector2 position, bool isRight)
+    {
+        var newClone = Instantiate(playerClone, position, Quaternion.identity, transform);
+        if (!isRight)
+            newClone.GetComponent<Character2D>().Flip();
     }
 
     void Update()
