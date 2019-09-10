@@ -11,10 +11,10 @@ namespace UnityStandardAssets._2D
         public Player player;
         public GameObject prefab;
         public GameObject instance;
-        public int id = 0;
+        public int playerID;
         private void Awake()
         {
-            player = ReInput.players.GetPlayer(id);
+            player = ReInput.players.GetPlayer(playerID);
 
             m_Character = GetComponent<Character2D>();
         }
