@@ -73,4 +73,16 @@ public class GameManager : Singleton<GameManager>
     {
         
     }
+
+
+    public void Switch(Hunter hunter, UserControl prey)
+    {
+        int hunterID = hunter.playerID;
+        int preyID = prey.playerID;
+
+        hunter.playerID = preyID;
+        prey.playerID = hunterID;
+
+
+    }
 }
