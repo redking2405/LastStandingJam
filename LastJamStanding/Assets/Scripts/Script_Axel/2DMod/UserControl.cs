@@ -11,7 +11,17 @@ namespace UnityStandardAssets._2D
         public Player player;
         public GameObject prefab;
         public GameObject instance;
-        public int playerID;
+        [SerializeField] private int playerID;
+        public int GetPlayerID()
+        {
+            return playerID;
+        }
+
+        public void SetPlayerID(int newID)
+        {
+            playerID = newID;
+            player = ReInput.players.GetPlayer(playerID);
+        }
         private void Awake()
         {
             player = ReInput.players.GetPlayer(playerID);
@@ -26,8 +36,8 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-            //Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
+            //Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+            Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
