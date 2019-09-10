@@ -10,7 +10,10 @@ public class GameManager : Singleton<GameManager>
     public Hunter player1;
     public Hunter player2;
     private Player player;
-    private GameObject nPcClone = new GameObject("StartClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
+    private GameObject nPcClone; 
+    public int count;
+    public int xMax;
+    public int yMax;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class GameManager : Singleton<GameManager>
 
             AssignJoystickToNextOpenPlayer(j);
         }
+
+        nPcClone = new GameObject("StartClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
     }
 
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
@@ -49,8 +54,8 @@ public class GameManager : Singleton<GameManager>
 
     void InstantiateCrowd()
     {
-        int count = 10;
-        int xMax = 20, yMax = 10;
+        
+        
         for (int i = 0; i < count; i++)
         {
             Vector2 r_Postition = new Vector2(Random.Range(0, xMax), Random.Range(0, yMax));
