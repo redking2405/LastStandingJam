@@ -57,18 +57,19 @@ public class GameManager : Singleton<GameManager>
     void InstantiateCrowd()
     {
         int count = 10;
-        int yMax = (int)Camera.main.orthographicSize * 2, xMax = (int)(Camera.main.aspect * yMax);
+        int yMax = (int)Camera.main.orthographicSize, xMax = (int)(Camera.main.aspect * yMax);
+        nPcClone.transform.position = new Vector2(xMax, yMax);
         for (int i = 0; i < count; i++)
         {
-            Vector2 r_Postition = new Vector2(Random.Range(-xMax / 2, xMax / 2), Random.Range(-yMax / 2, yMax / 2));
+            Vector2 r_Postition = new Vector2(Random.Range(-xMax, xMax), Random.Range(-yMax, yMax));
             Instantiate(nPcClone, r_Postition, Quaternion.identity, transform);
         }
     }
 
-    void InstantiateClone(Vector2 position, bool isRight /*, animator */)
+    void InstantiateClone(Vector2 position, bool isRight, RuntimeAnimatorController animatorController)
     {
         var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
-        // newClone.GetComponent<SpriteRenderer>().sprite = nPcSprite;
+        newClone.GetComponent<Animator>().runtimeAnimatorController = animatorController;
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
     }

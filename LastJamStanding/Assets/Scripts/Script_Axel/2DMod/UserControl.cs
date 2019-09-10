@@ -46,6 +46,7 @@ namespace UnityStandardAssets._2D
             if (player.GetButtonDown("CloneVert"))
             {
                 //spawn on game manager
+                //GameManager.Instance.InstanciateClone
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
                 instance.GetComponent<Character2D>().SetColor(m_Character.color[0]);
             }
