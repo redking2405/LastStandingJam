@@ -31,24 +31,29 @@ namespace UnityStandardAssets._2D
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
+            
             m_Character.Move(h.magnitude,h);
-            if (Input.GetKeyDown(KeyCode.U))
+            if (player.GetButtonDown("CloneVert"))
             {
+                //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
                 instance.GetComponent<Character2D>().SetColor(m_Character.color[0]);
             }
-            if (Input.GetKeyDown(KeyCode.I))
+            if (player.GetButtonDown("CloneJaune"))
             {
+                //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
                 instance.GetComponent<Character2D>().SetColor(m_Character.color[1]);
             }
-            if (Input.GetKeyDown(KeyCode.J))
+            if (player.GetButtonDown("CloneBleu"))
             {
+                //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
                 instance.GetComponent<Character2D>().SetColor(m_Character.color[2]);
             }
-            if (Input.GetKeyDown(KeyCode.K))
+            if (player.GetButtonDown("CloneRouge"))
             {
+                //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
                 instance.GetComponent<Character2D>().SetColor(m_Character.color[3]);
             }
