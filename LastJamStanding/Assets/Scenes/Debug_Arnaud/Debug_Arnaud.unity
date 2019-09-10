@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 581395326}
   - component: {fileID: 581395328}
   - component: {fileID: 581395327}
+  - component: {fileID: 581395329}
   m_Layer: 5
   m_Name: Chrono
   m_TagString: Untagged
@@ -265,6 +266,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581395325}
   m_CullTransparentMesh: 0
+--- !u!114 &581395329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581395325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3caa07a7a9c9a9648b78094dc48911e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 581395327}
+  startTimer: 90
 --- !u!1 &725913103
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,12 +630,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_Rigidbody2D: {fileID: 0}
-  color:
+  colors:
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  currentColor: {r: 0, g: 0, b: 0, a: 0}
+  currentColor: 3
+  yellow: {fileID: 0}
+  blue: {fileID: 0}
+  red: {fileID: 0}
+  green: {fileID: 0}
 --- !u!1001 &1250083014
 PrefabInstance:
   m_ObjectHideFlags: 0
