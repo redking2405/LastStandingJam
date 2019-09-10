@@ -30,7 +30,7 @@ namespace UnityStandardAssets._2D
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
-            m_Character.Move(h.magnitude,Vector2.SignedAngle(Vector2.right,h));
+            m_Character.Move(h.magnitude,h);
             if (Input.GetKeyDown(KeyCode.U))
             {
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);

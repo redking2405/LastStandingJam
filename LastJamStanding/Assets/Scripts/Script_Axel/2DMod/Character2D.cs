@@ -36,12 +36,10 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, float direction)
+        public void Move(float move, Vector2 direction)
         {
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             //m_Anim.SetFloat("Speed", Mathf.Abs(move));
-            pos.x =  Mathf.Cos(Mathf.Deg2Rad * direction);
-            pos.y =  Mathf.Sin(Mathf.Deg2Rad * direction);
             // Move the character
             m_Rigidbody2D.velocity = new Vector2(pos.x * move * m_MaxSpeed, pos.y * move * m_MaxSpeed);
             print(0);
