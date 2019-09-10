@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 7752539305854824768}
   - component: {fileID: 7752539305854824769}
   - component: {fileID: 7752539305854824770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,11 +103,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_Rigidbody2D: {fileID: 0}
-  colors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   currentColor: 0
   yellow: {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
   blue: {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
@@ -194,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7752539306273438011}
   - component: {fileID: 7752539306273438020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

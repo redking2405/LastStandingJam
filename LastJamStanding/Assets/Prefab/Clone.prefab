@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1642892655065909853}
   - component: {fileID: 1335863431857166983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,12 +91,13 @@ GameObject:
   - component: {fileID: 4689283968627667916}
   - component: {fileID: 4689283968627667917}
   - component: {fileID: 4689283968627667918}
+  - component: {fileID: -5236457600766668545}
   - component: {fileID: 4689283968627667915}
   - component: {fileID: 4689283968627667914}
   - component: {fileID: 1647456035473701708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Clone
-  m_TagString: Untagged
+  m_TagString: Prey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4689283968627667888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.96, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 5, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 1642892655065909853}
@@ -182,16 +183,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_Rigidbody2D: {fileID: 0}
-  colors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   currentColor: 3
   yellow: {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
   blue: {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
   red: {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
   green: {fileID: 22100000, guid: 49d4a3984639d244ba21c341f72c090c, type: 2}
+--- !u!114 &-5236457600766668545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689283968627667888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6455cf8a4144b478117579dc8e3549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 0}
 --- !u!50 &4689283968627667915
 Rigidbody2D:
   serializedVersion: 4

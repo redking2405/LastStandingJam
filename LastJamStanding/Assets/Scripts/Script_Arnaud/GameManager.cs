@@ -23,8 +23,6 @@ public class GameManager : Singleton<GameManager>
 
             AssignJoystickToNextOpenPlayer(j);
         }
-
-        nPcClone = new GameObject("StartClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
     }
 
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
@@ -50,8 +48,6 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         InstantiateCrowd();
-
-       
     }
 
     void InstantiateCrowd()

@@ -43,12 +43,6 @@ namespace UnityStandardAssets._2D
             {
                 r_movestop -= Time.deltaTime;
             }
-            
-            ContactFilter2D wallContactFilter2D = new ContactFilter2D();
-            ContactFilter2D charaContactFilter2D = new ContactFilter2D();
-            wallContactFilter2D.SetLayerMask(LayerMask.NameToLayer("Wall"));
-            charaContactFilter2D.SetLayerMask(LayerMask.NameToLayer("Character"));
-            List<Collider2D> colliderResults = new List<Collider2D>();
         }
 
         private void FixedUpdate()
