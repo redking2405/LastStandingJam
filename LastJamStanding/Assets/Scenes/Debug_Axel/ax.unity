@@ -301,7 +301,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 1
     drawMode: 0
@@ -310,6 +310,60 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1019731363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019731365}
+  - component: {fileID: 1019731364}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1019731364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019731363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83cea4a71271434eb244465130e0fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  nPcClone: {fileID: 4689283968627667888, guid: 502703b8743ace54487ebeddc8f3b7fb,
+    type: 3}
+  playerClone: {fileID: 7752539305854824763, guid: 5a94c8158e74d0340a49964fc8685c33,
+    type: 3}
+  npcAnimatorControllers:
+  - {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
+  - {fileID: 22100000, guid: 49d4a3984639d244ba21c341f72c090c, type: 2}
+  - {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
+  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+--- !u!4 &1019731365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019731363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.852307, y: -0.11121509, z: -8.967957}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1122061763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,6 +429,91 @@ PrefabInstance:
     - target: {fileID: 882802511863052289, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_windowsStandalone.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_linuxStandalone.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_osxStandalone.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_windows8Store.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_windowsUWP.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_iOS.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_tvOS.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_android.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_ps3.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_ps4.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_psVita.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_xbox360.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_xboxOne.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_wii.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_wiiu.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_switch.disableKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.configVars.platformVars_webGL.disableKeyboard
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -477,7 +616,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.5, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 1
     drawMode: 0
@@ -486,6 +625,125 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1804685835
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7641525347719457880, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7641525347719457876, guid: 588e0ad29f499224b80a08da074c6a59,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 588e0ad29f499224b80a08da074c6a59, type: 3}
 --- !u!1 &2105350950
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,7 +64,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void InstantiateClone(Vector2 position, bool isRight, int animationControllerID)
+    public void InstantiateClone(Vector2 position, bool isRight, int animationControllerID)
     {
         var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
         RuntimeAnimatorController animatorController = npcAnimatorControllers[animationControllerID];
@@ -72,12 +72,6 @@ public class GameManager : Singleton<GameManager>
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
     }
-
-    void Update()
-    {
-        
-    }
-
 
     public void RemoveJoystickFromPlayer(Player player1, Player player2)
     {

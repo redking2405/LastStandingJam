@@ -45,28 +45,22 @@ namespace UnityStandardAssets._2D
             m_Character.Move(h.magnitude,h);
             if (player.GetButtonDown("CloneVert"))
             {
-                //spawn on game manager
-                //GameManager.Instance.InstanciateClone
-                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(1);
+                GameManager.Instance.InstantiateClone(transform.position,GetComponent<Character2D>().m_FacingRight, 1);
             }
             if (player.GetButtonDown("CloneJaune"))
             {
-                //spawn on game manager
-                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(3);
+                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 3);
+
             }
             if (player.GetButtonDown("CloneBleu"))
             {
-                //spawn on game manager
-                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(0);
+                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 0);
+
             }
             if (player.GetButtonDown("CloneRouge"))
             {
-                //spawn on game manager
-                instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(2);
+                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
+
             }
         }
     }

@@ -11,10 +11,10 @@ namespace UnityStandardAssets._2D
         
         const float k_DetectionRadius = .2f; // Radius of the overlap circle to determine if [close to an obstacle? (leonard's change)]
         private Animator m_Anim;            // Reference to the player's animator component.
-        [SerializeField] public Rigidbody2D m_Rigidbody2D;
-        private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-        public int currentColor =3;
-        public RuntimeAnimatorController yellow, blue, red, green;
+        [SerializeField] private Rigidbody2D m_Rigidbody2D;
+        public bool m_FacingRight = true;  // For determining which way the player is currently facing.
+        public int currentColor = 3;
+        public RuntimeAnimatorController blue, green, red, yellow;
         private void Awake()
         {
             // Setting up references.
