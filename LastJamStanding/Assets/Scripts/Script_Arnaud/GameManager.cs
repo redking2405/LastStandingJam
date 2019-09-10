@@ -62,10 +62,10 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void InstantiateClone(Vector2 position, bool isRight /*, animator */)
+    void InstantiateClone(Vector2 position, bool isRight, RuntimeAnimatorController animatorController)
     {
         var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
-        // newClone.GetComponent<SpriteRenderer>().sprite = nPcSprite;
+        newClone.GetComponent<Animator>().runtimeAnimatorController = animatorController;
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
     }
