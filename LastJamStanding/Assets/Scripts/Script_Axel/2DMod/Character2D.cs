@@ -13,19 +13,36 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-        public Color[] color = { Color.blue, Color.green, Color.red, Color.yellow };
-        public Color currentColor;
+        public Color[] colors = { Color.blue, Color.green, Color.red, Color.yellow };
+        public int currentColor =3;
+        public RuntimeAnimatorController yellow, blue, red, green;
         private void Awake()
         {
             // Setting up references.
-            //m_Anim = GetComponent<Animator>();
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();
-
+            m_Anim = GetComponent<Animator>();
+            m_Rigidbody2D = GetComponent<Rigidbody2D>();  
         }
-        public Color SetColor(Color color)
+        public int SetColor(int i)
         {
-            GetComponent<SpriteRenderer>().color = color;
-            return currentColor = color;
+            switch(i)
+            {
+                case 0:
+                    m_Anim.runtimeAnimatorController = blue;
+                    return currentColor = i;
+                case 1:
+                    m_Anim.runtimeAnimatorController = green;
+                    return currentColor = i;
+                case 2:
+                    m_Anim.runtimeAnimatorController = red;
+                    return currentColor = i;
+                case 3:
+                    m_Anim.runtimeAnimatorController = yellow;
+                    return currentColor = i;
+                default:
+                    m_Anim.runtimeAnimatorController = yellow;
+                    return currentColor = 3;
+            };
+
         }
         private void FixedUpdate()
         {
@@ -39,10 +56,10 @@ namespace UnityStandardAssets._2D
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             //m_Anim.SetFloat("Speed", Mathf.Abs(move));
             // Move the character
+            // direction.Normalize();
+            direction.Normalize();
             Vector2 nextVelocity = new Vector2(direction.x * move * m_MaxSpeed, direction.y * move * m_MaxSpeed);
-            if(nextVelocity.magnitude > m_MaxSpeed) { Vector2.ClampMagnitude(nextVelocity, m_MaxSpeed); }
             m_Rigidbody2D.velocity = nextVelocity;
-            
         }
 
         public void Flip()

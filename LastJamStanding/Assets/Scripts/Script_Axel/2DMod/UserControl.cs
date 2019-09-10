@@ -48,25 +48,25 @@ namespace UnityStandardAssets._2D
                 //spawn on game manager
                 //GameManager.Instance.InstanciateClone
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[0]);
+                instance.GetComponent<Character2D>().SetColor(1);
             }
             if (player.GetButtonDown("CloneJaune"))
             {
                 //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[1]);
+                instance.GetComponent<Character2D>().SetColor(3);
             }
             if (player.GetButtonDown("CloneBleu"))
             {
                 //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[2]);
+                instance.GetComponent<Character2D>().SetColor(0);
             }
             if (player.GetButtonDown("CloneRouge"))
             {
                 //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[3]);
+                instance.GetComponent<Character2D>().SetColor(2);
             }
         }
     }
