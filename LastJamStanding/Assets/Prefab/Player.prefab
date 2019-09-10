@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7752539305854824768}
   - component: {fileID: 7752539305854824769}
   - component: {fileID: 7752539305854824770}
-  m_Layer: 0
-  m_Name: Circle
+  m_Layer: 8
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda9712fe5dd6c645b63cdda89e8c8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxSpeed: 10
+  m_MaxSpeed: 2
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 0
@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7752539306273438011}
   - component: {fileID: 7752539306273438020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

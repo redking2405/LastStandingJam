@@ -6,14 +6,14 @@ namespace UnityStandardAssets._2D
     [RequireComponent(typeof(Rigidbody2D))]
     public class Character2D : MonoBehaviour
     {
-        [SerializeField] private float m_MaxSpeed = 10f; // The fastest the player can travel in the x axis.
+        [SerializeField] private float m_MaxSpeed = 1f; // The fastest the player can travel in the x axis.
         [SerializeField] private LayerMask m_WhatIsGround; // A mask determining what is ground to the character
         
         const float k_DetectionRadius = .2f; // Radius of the overlap circle to determine if [close to an obstacle? (leonard's change)]
         private Animator m_Anim;            // Reference to the player's animator component.
-        [SerializeField] private Rigidbody2D m_Rigidbody2D;
+        [SerializeField] public Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-        public Color[] color = { Color.blue, Color.green, Color.red, Color.yellow };
+        public Color[] color = { Color.blue, Color.green, Color.red, Color.yellow};
         public Color currentColor;
         private void Awake()
         {
@@ -39,7 +39,7 @@ namespace UnityStandardAssets._2D
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             //m_Anim.SetFloat("Speed", Mathf.Abs(move));
             // Move the character
-            Vector2 nextVelocity = new Vector2(direction.x * move * m_MaxSpeed, direction.y * move * m_MaxSpeed);
+            Vector2 nextVelocity = direction * move * m_MaxSpeed;
             if(nextVelocity.magnitude > m_MaxSpeed) { Vector2.ClampMagnitude(nextVelocity, m_MaxSpeed); }
             m_Rigidbody2D.velocity = nextVelocity;
             

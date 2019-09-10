@@ -12,6 +12,8 @@ namespace UnityStandardAssets._2D
 
         // Randomizers
         float r_movestop, r_speed;
+        float minMovestop = 0.1f; float maxMovestop = 5;
+        float minSpeed = 0.15f; float maxSpeed = 1f;
         Vector2 r_orientation;
         bool obstacleReached = false;
         bool moving = false;
@@ -27,8 +29,8 @@ namespace UnityStandardAssets._2D
 
         void Start()
         {
-            r_movestop = Random.Range(1, 5); // the cooldown between two moves
-            r_speed = Random.Range(1, 3);    // the speed when moving the next time
+            r_movestop = Random.Range(minMovestop, maxMovestop); // the cooldown between two moves
+            r_speed = Random.Range(minSpeed, maxSpeed);    // the speed when moving the next time
         }
 
         void Update()
@@ -41,22 +43,12 @@ namespace UnityStandardAssets._2D
             {
                 r_movestop -= Time.deltaTime;
             }
-
+            
             ContactFilter2D wallContactFilter2D = new ContactFilter2D();
             ContactFilter2D charaContactFilter2D = new ContactFilter2D();
             wallContactFilter2D.SetLayerMask(LayerMask.NameToLayer("Wall"));
             charaContactFilter2D.SetLayerMask(LayerMask.NameToLayer("Character"));
             List<Collider2D> colliderResults = new List<Collider2D>();
-
-            // Collision detections (walls having priority over other characters)
-            if (Physics2D.OverlapCircle(transform.position, 1.5f, wallContactFilter2D, colliderResults) > 0) // Touching a wall (static walls only, going to it)
-            {
-                SetRotationRangeUponEncounter(colliderResults);
-            }
-            else if (Physics2D.OverlapPoint(transform.position + transform.right * 1.5f, charaContactFilter2D, colliderResults) > 0) // Touching obstacles in front of it (base vector is pointing to the right (rot 0)
-            {
-                SetRotationRangeUponEncounter(colliderResults);
-            }
         }
 
         private void FixedUpdate()
@@ -65,18 +57,25 @@ namespace UnityStandardAssets._2D
                 m_NPC.Move(r_speed, r_orientation);
         }
 
+        private void OnCollisionEnter2D(Collision2D collision) // Collision detections (walls)
+        {
+            if (collision.collider.CompareTag("Wall"))
+            {
+                SetRotationRangeUponEncounter(collision.GetContact(0).normal);
+            }
+        }
+
         void SetNextMoveState(float orientation)
         {
             moving = !moving;
-            r_movestop = Random.Range(0.5f, 5);
-            r_speed = Random.Range(1, 3);
+            r_movestop = Random.Range(minMovestop, maxMovestop); // the cooldown between two moves
+            r_speed = Random.Range(minSpeed, maxSpeed);    // the speed when moving the next time
             r_orientation = RotateVector(Vector2.right, orientation);
         }
 
-        void SetRotationRangeUponEncounter(List<Collider2D>_colliderResults)
+        void SetRotationRangeUponEncounter(Vector2 colliderNorm)
         {
-            Vector2 obstacleToCharacterNormal = Vector2.Perpendicular(_colliderResults[0].transform.position - transform.position);
-            float minimumAngle = Vector2.Angle(Vector2.right, obstacleToCharacterNormal);
+            float minimumAngle = Vector2.Angle(Vector2.right, Vector2.Perpendicular(colliderNorm));
             SetNextMoveState(Random.Range(minimumAngle, (minimumAngle + 180) % 360));
         }
 
