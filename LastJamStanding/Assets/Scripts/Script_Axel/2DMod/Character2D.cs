@@ -13,7 +13,6 @@ namespace UnityStandardAssets._2D
         private Animator m_Anim;            // Reference to the player's animator component.
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-        public Vector2 pos;
         public Color[] color = { Color.blue, Color.green, Color.red, Color.yellow };
         public Color currentColor;
         private void Awake()
@@ -22,7 +21,6 @@ namespace UnityStandardAssets._2D
             //m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
-            pos = Vector2.zero;
         }
         public Color SetColor(Color color)
         {
@@ -41,8 +39,7 @@ namespace UnityStandardAssets._2D
             // The Speed animator parameter is set to the absolute value of the horizontal input.
             //m_Anim.SetFloat("Speed", Mathf.Abs(move));
             // Move the character
-            m_Rigidbody2D.velocity = new Vector2(pos.x * move * m_MaxSpeed, pos.y * move * m_MaxSpeed);
-            print(0);
+            m_Rigidbody2D.velocity =  new Vector2(direction.x * move * m_MaxSpeed, direction.y * move * m_MaxSpeed);
             
         }
 
