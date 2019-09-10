@@ -45,9 +45,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    
+
     void Start()
     {
         InstantiateCrowd();
+
+       
     }
 
     void InstantiateCrowd()
@@ -76,14 +80,21 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    public void RemoveJoystickFromPlayer(Player player1, Player player2)
+    {
+        //player1.controllers;
+    }
+   
+
     public void Switch(Hunter hunter, UserControl prey)
     {
-        int hunterID = hunter.playerID;
-        int preyID = prey.playerID;
-
-        hunter.playerID = preyID;
-        prey.playerID = hunterID;
-
+        int hunterID = hunter.GetPlayerID();
+        int preyID = prey.GetPlayerID();
+        //Player hunterPlayer = hunter.player;
+        //Player preyPlayer = prey.player;
+        hunter.SetPlayerID(preyID);
+        prey.SetPlayerID(hunterID);
+        Timer.Instance.RestartTimer();
 
     }
 }

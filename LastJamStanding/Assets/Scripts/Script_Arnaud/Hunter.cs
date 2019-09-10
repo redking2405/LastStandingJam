@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
-
+using UnityStandardAssets._2D;
 public class Hunter : MonoBehaviour
 {
 
@@ -16,9 +16,24 @@ public class Hunter : MonoBehaviour
     private bool canShoot;
     public bool isAiming;
     public Player player;
-    public int playerID;
+    [SerializeField] private int playerID;
+    public int GetPlayerID()
+    {
+        return playerID;
+    }
+
+    public void SetPlayerID(int newID)
+    {
+        playerID = newID;
+        player = ReInput.players.GetPlayer(playerID);
+    }
+
     Vector2 position;
     public LayerMask mask;
+    int numTimeMissed;
+    public float baseTimeForReload;
+    Color alpha;
+    Color original;
 
 
     private void Awake()
@@ -31,6 +46,9 @@ public class Hunter : MonoBehaviour
         originalTimeMoving = timeMoving;
         canMove = true;
         canShoot = true;
+        numTimeMissed = 0;
+        alpha = GetComponent<SpriteRenderer>().color;
+        original = alpha;
     }
 
     private void FixedUpdate()
@@ -57,6 +75,19 @@ public class Hunter : MonoBehaviour
             Shoot();
         }
 
+        if (!canShoot)
+        {
+            Color tmp;
+            tmp = alpha;
+            tmp.a = 0.5f;
+            alpha = tmp;
+        }
+
+        else
+        {
+            alpha = original;
+        }
+
         if (player.GetButton("Modifier"))
         {
             isAiming = true;
@@ -80,8 +111,23 @@ public class Hunter : MonoBehaviour
         if (hit.collider.gameObject.transform.parent.gameObject.tag == "Prey")
         {
             Debug.Log("Bam t'es mort");
+            GameManager.Instance.Switch(this, hit.collider.GetComponentInParent<UserControl>());
         }
 
+        if (hit.collider.gameObject.transform.parent.gameObject.tag != "Prey")
+        {
+            numTimeMissed++;
+            canShoot = false;
+        }
+
+        
+
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(numTimeMissed * baseTimeForReload);
+        canShoot = true;
     }
 
     IEnumerator WaitForBreath()

@@ -11,7 +11,17 @@ namespace UnityStandardAssets._2D
         public Player player;
         public GameObject prefab;
         public GameObject instance;
-        public int playerID;
+        [SerializeField] private int playerID;
+        public int GetPlayerID()
+        {
+            return playerID;
+        }
+
+        public void SetPlayerID(int newID)
+        {
+            playerID = newID;
+            player = ReInput.players.GetPlayer(playerID);
+        }
         private void Awake()
         {
             player = ReInput.players.GetPlayer(playerID);
@@ -26,8 +36,8 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-            //Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
+            //Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
+            Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
@@ -38,25 +48,25 @@ namespace UnityStandardAssets._2D
                 //spawn on game manager
                 //GameManager.Instance.InstanciateClone
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[0]);
+                instance.GetComponent<Character2D>().SetColor(1);
             }
             if (player.GetButtonDown("CloneJaune"))
             {
                 //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[1]);
+                instance.GetComponent<Character2D>().SetColor(3);
             }
             if (player.GetButtonDown("CloneBleu"))
             {
                 //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[2]);
+                instance.GetComponent<Character2D>().SetColor(0);
             }
             if (player.GetButtonDown("CloneRouge"))
             {
                 //spawn on game manager
                 instance = Instantiate(prefab, Vector2.zero, Quaternion.identity, null);
-                instance.GetComponent<Character2D>().SetColor(m_Character.color[3]);
+                instance.GetComponent<Character2D>().SetColor(2);
             }
         }
     }

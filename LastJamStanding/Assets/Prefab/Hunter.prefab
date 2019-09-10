@@ -100,6 +100,10 @@ MonoBehaviour:
   aimingFactor: 0.5
   isAiming: 0
   playerID: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  baseTimeForReload: 3
 --- !u!95 &1057422425
 Animator:
   serializedVersion: 3
