@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public Hunter player2;
     private Player player;
 
-    GameObject nPcClone, playerClone;
+    public GameObject nPcClone, playerClone;
 
     private void Awake()
     {
@@ -25,7 +25,6 @@ public class GameManager : Singleton<GameManager>
         }
 
         nPcClone = new GameObject("StartClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
-        playerClone = new GameObject("PlayerClone", typeof(Rigidbody2D), typeof(Character2D), typeof(AIBehaviour));
     }
 
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
@@ -54,17 +53,18 @@ public class GameManager : Singleton<GameManager>
     void InstantiateCrowd()
     {
         int count = 10;
-        int yMax = (int)Camera.main.orthographicSize, xMax = (int)(Camera.main.aspect * yMax);
+        int yMax = (int)Camera.main.orthographicSize * 2, xMax = (int)(Camera.main.aspect * yMax);
         for (int i = 0; i < count; i++)
         {
-            Vector2 r_Postition = new Vector2(Random.Range(0, xMax), Random.Range(0, yMax));
+            Vector2 r_Postition = new Vector2(Random.Range(-xMax / 2, xMax / 2), Random.Range(-yMax / 2, yMax / 2));
             Instantiate(nPcClone, r_Postition, Quaternion.identity, transform);
         }
     }
 
-    void InstantiateClone(Vector2 position, bool isRight)
+    void InstantiateClone(Vector2 position, bool isRight /*, animator */)
     {
-        var newClone = Instantiate(playerClone, position, Quaternion.identity, transform);
+        var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
+        // newClone.GetComponent<SpriteRenderer>().sprite = nPcSprite;
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
     }
