@@ -311,6 +311,11 @@ MonoBehaviour:
     type: 3}
   playerClone: {fileID: 7752539305854824763, guid: 5a94c8158e74d0340a49964fc8685c33,
     type: 3}
+  npcAnimatorControllers:
+  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+  - {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
+  - {fileID: 22100000, guid: 49d4a3984639d244ba21c341f72c090c, type: 2}
+  - {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
 --- !u!61 &2010613592
 BoxCollider2D:
   m_ObjectHideFlags: 0

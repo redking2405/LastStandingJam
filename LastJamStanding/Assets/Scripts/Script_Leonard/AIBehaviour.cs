@@ -33,16 +33,23 @@ namespace UnityStandardAssets._2D
             r_speed = Random.Range(minSpeed, maxSpeed);    // the speed when moving the next time
         }
 
+        Vector2 collisionPoint, collisionNorm;//Debug
         void Update()
         {
             if (r_movestop <= 0) // Resets random values (cooldown/speed/orientation)
             {
-                SetNextMoveState(Random.Range(0, 360));
+                if (!obstacleReached)
+                    SetNextMoveState(Random.Range(0, 360));
+                else {
+                    SetNextMoveState(0);
+                    obstacleReached = false;
+                }
             }
             else // Moves until the cooldown resets
             {
                 r_movestop -= Time.deltaTime;
             }
+            Debug.DrawRay(collisionPoint, collisionNorm, Color.red, 2f);
         }
 
         private void FixedUpdate()
@@ -55,22 +62,28 @@ namespace UnityStandardAssets._2D
         {
             if (collision.collider.CompareTag("Wall"))
             {
+                obstacleReached = true;
                 SetRotationRangeUponEncounter(collision.GetContact(0).normal);
+                collisionPoint = collision.GetContact(0).point;
+                collisionNorm = collision.GetContact(0).normal;
             }
         }
 
         void SetNextMoveState(float orientation)
         {
+            if ((!moving && !obstacleReached) || (moving && obstacleReached)) // the speed/orientation when moving the next time
+            {
+                r_speed = Random.Range(minSpeed, maxSpeed);
+                r_orientation = RotateVector(Vector2.right, orientation);
+            }
             moving = !moving;
-            r_movestop = Random.Range(minMovestop, maxMovestop); // the cooldown between two moves
-            r_speed = Random.Range(minSpeed, maxSpeed);    // the speed when moving the next time
-            r_orientation = RotateVector(Vector2.right, orientation);
+            r_movestop = Random.Range(minMovestop, maxMovestop); // the cooldown between two moves OR the move duration
         }
 
         void SetRotationRangeUponEncounter(Vector2 colliderNorm)
         {
-            float minimumAngle = Vector2.Angle(Vector2.right, Vector2.Perpendicular(colliderNorm));
-            SetNextMoveState(Random.Range(minimumAngle, (minimumAngle + 180) % 360));
+            float colliderNormAngle = (Vector2.SignedAngle(Vector2.right, colliderNorm) + 360) % 360;
+            SetNextMoveState(Random.Range(colliderNormAngle - 45, (colliderNormAngle + 45) % 360));
         }
 
         public Vector2 RotateVector(Vector2 v, float angle)

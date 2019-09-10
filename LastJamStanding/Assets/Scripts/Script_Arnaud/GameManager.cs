@@ -12,6 +12,8 @@ public class GameManager : Singleton<GameManager>
     private Player player;
 
     public GameObject nPcClone, playerClone;
+    [SerializeField]
+    private RuntimeAnimatorController[] npcAnimatorControllers;
 
     private void Awake()
     {
@@ -52,19 +54,20 @@ public class GameManager : Singleton<GameManager>
 
     void InstantiateCrowd()
     {
-        int count = 10;
+        int count = 100;
         int yMax = (int)Camera.main.orthographicSize, xMax = (int)(Camera.main.aspect * yMax);
         nPcClone.transform.position = new Vector2(xMax, yMax);
         for (int i = 0; i < count; i++)
         {
             Vector2 r_Postition = new Vector2(Random.Range(-xMax, xMax), Random.Range(-yMax, yMax));
-            Instantiate(nPcClone, r_Postition, Quaternion.identity, transform);
+            InstantiateClone(r_Postition, Random.Range(0, 2) == 0, Random.Range(0, 4));
         }
     }
 
-    void InstantiateClone(Vector2 position, bool isRight, RuntimeAnimatorController animatorController)
+    void InstantiateClone(Vector2 position, bool isRight, int animationControllerID)
     {
         var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
+        RuntimeAnimatorController animatorController = npcAnimatorControllers[animationControllerID];
         newClone.GetComponent<Animator>().runtimeAnimatorController = animatorController;
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
