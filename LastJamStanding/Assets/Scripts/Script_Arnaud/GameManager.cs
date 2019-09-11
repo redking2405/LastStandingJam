@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
         if (maxCloneCount < currentCloneCount)
         {
             int randomArrayId = Random.Range(0, currentCloneCount);
-            Destroy(clones[randomArrayId]);
+            clones[randomArrayId].GetComponent<AIBehaviour>().Death(); 
             currentCloneCount--;
             clones[randomArrayId] = newClone;
         }

@@ -103,6 +103,7 @@ namespace UnityStandardAssets._2D
 
         public void Death()
         {
+            GetComponent<Character2D>().TriggerDeath();
             Destroy(gameObject);
         }
 

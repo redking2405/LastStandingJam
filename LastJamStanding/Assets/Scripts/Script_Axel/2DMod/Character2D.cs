@@ -37,7 +37,14 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Set the vertical animation
-            //m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
+            if(m_Rigidbody2D.velocity.magnitude > 0.1f && m_Anim.GetBool("Moving") == false)
+            {
+                m_Anim.SetBool("Moving", true);
+            }
+            else if (m_Rigidbody2D.velocity.magnitude < 0.1f && m_Anim.GetBool("Moving") == true)
+            {
+                m_Anim.SetBool("Moving", false);
+            }
         }
 
 
@@ -61,6 +68,14 @@ namespace UnityStandardAssets._2D
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+        public void TriggerDeath()
+        {
+            m_Anim.SetTrigger("isDying");
+        }
+        private void LateUpdate()
+        {
+            m_Anim.ResetTrigger("isDying");
         }
     }
 }
