@@ -71,11 +71,11 @@ namespace UnityStandardAssets._2D
         }
         public void TriggerDeath()
         {
-            m_Anim.SetTrigger("isDying");
+            m_Anim.SetTrigger("Death");
         }
         private void LateUpdate()
         {
-            m_Anim.ResetTrigger("isDying");
+            m_Anim.ResetTrigger("Death");
         }
     }
 }

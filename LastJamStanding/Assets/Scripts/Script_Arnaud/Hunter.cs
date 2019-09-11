@@ -44,6 +44,7 @@ public class Hunter : MonoBehaviour
     private void Awake()
     {
         player = ReInput.players.GetPlayer(playerID);
+        sprite = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
@@ -52,7 +53,7 @@ public class Hunter : MonoBehaviour
         canMove = true;
         canShoot = true;
         numTimeMissed = 0;
-        alpha = GetComponent<SpriteRenderer>().color;
+        alpha = sprite.color;
         original = alpha;
     }
 
