@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 namespace UnityStandardAssets._2D
 {
@@ -19,7 +20,14 @@ namespace UnityStandardAssets._2D
             // Setting up references.
             isHit = false;
             m_Anim = GetComponent<Animator>();
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();  
+            m_Rigidbody2D = GetComponent<Rigidbody2D>();
+
+        }
+        public void Start()
+        {
+                GetComponent<SpriteRenderer>().color = Color.red;
+            //StartCoroutine("FadeIn");
+
         }
         public int SetColor(int i)
         {
@@ -47,7 +55,22 @@ namespace UnityStandardAssets._2D
             }
         }
 
+        IEnumerator FadeIn()
+        {
+            float transitionTime = 0;
+            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+            Color c = Color.white; 
+            while (transitionTime < 1)
+            {
+                Debug.Log(transitionTime);
+                Debug.Log(c);
+                c = new Color(c.r, c.g, c.b, 1-transitionTime);
+                GetComponent<SpriteRenderer>().color = Color.red;
+                transitionTime += Time.fixedDeltaTime;
+                yield return new WaitForFixedUpdate();
+            }
 
+        }
         public void Move(float move, Vector2 direction)
         {
             // The Speed animator parameter is set to the absolute value of the horizontal input.
