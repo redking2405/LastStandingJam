@@ -17,6 +17,11 @@ public class Hunter : MonoBehaviour
     public bool isAiming;
     public Player player;
     [SerializeField] private int playerID;
+    bool targetPrey;
+    bool targetClone;
+    bool targetNothing;
+    GameObject target;
+    SpriteRenderer sprite;
     public int GetPlayerID()
     {
         return playerID;
@@ -81,11 +86,14 @@ public class Hunter : MonoBehaviour
             tmp = alpha;
             tmp.a = 0.5f;
             alpha = tmp;
+            sprite.color = alpha;
+            
         }
 
         else
         {
             alpha = original;
+            sprite.color = alpha;
         }
 
         if (player.GetButton("Modifier"))
@@ -96,11 +104,43 @@ public class Hunter : MonoBehaviour
 
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            target = collision.gameObject;
+            if (collision.gameObject.tag == "Prey")
+            {
+                targetPrey = true;
+                target = collision.gameObject;
+            }
+
+            else targetClone = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        target = collision.gameObject;
+        if (collision.gameObject.layer == 8)
+        {
+            if (collision.gameObject.tag == "Prey")
+            {
+                targetPrey = false;
+                target = null;
+
+            }
+
+            else targetClone = false;
+        }
+    }
+
     public void Shoot()
     {
         Debug.Log("Pan!");
        
-        Ray ray = new Ray(transform.position, Vector3.back*1000);
+        /*Ray ray = new Ray(transform.position, Vector3.back*1000);
 
         Physics.Raycast(ray, out RaycastHit hit, 1000);
 
@@ -108,35 +148,34 @@ public class Hunter : MonoBehaviour
 
         Debug.Log(ray.origin);
         Debug.Log(ray.direction);
-        Debug.DrawLine(transform.position, Vector3.forward, Color.red, 9999999);
-        if (hit.collider.gameObject.transform.parent.gameObject.layer == 8){
-        
-            if (hit.collider.gameObject.transform.parent.gameObject.tag == "Prey")
-            {
-                Debug.Log("Bam t'es mort");
-                GameManager.Instance.Switch(this, hit.collider.GetComponentInParent<UserControl>());
-            }
-
-            if (hit.collider.gameObject.transform.parent.gameObject.tag != "Prey")
-            {
-
-                hit.collider.GetComponentInParent<Character2D>().isHit = true;
-                numTimeMissed++;
-                canShoot = false;
-            }
+        Debug.DrawLine(transform.position, Vector3.forward, Color.red, 9999999);*/
+        if (targetClone)
+        {
+            target.GetComponent<AIBehaviour>().Death();
+            numTimeMissed++;
+            canShoot = false;
+            StartCoroutine(Reload());
         }
 
-        else
+        if (targetPrey)
+        {
+            canShoot = false;
+            GameManager.Instance.Switch(this, target.GetComponent<UserControl>());
+            StartCoroutine(Reload());
+        }
+        
+       if(!targetPrey && !targetClone)
         {
             numTimeMissed++;
             canShoot = false;
+            StartCoroutine(Reload());
         }
-       
-
-        
 
     }
 
+    
+
+    
     IEnumerator Reload()
     {
         yield return new WaitForSeconds(numTimeMissed * baseTimeForReload);

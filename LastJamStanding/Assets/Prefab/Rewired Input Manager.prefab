@@ -211,7 +211,7 @@ MonoBehaviour:
       _descriptiveName: Player3
       _startPlaying: 1
       _defaultJoystickMaps:
-      - _enabled: 0
+      - _enabled: 1
         _categoryId: 2
         _layoutId: 0
       - _enabled: 0
