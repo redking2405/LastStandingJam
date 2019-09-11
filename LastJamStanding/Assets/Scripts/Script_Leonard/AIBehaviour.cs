@@ -11,6 +11,7 @@ namespace UnityStandardAssets._2D
         private Character2D m_NPC;
         public static List<AIBehaviour> kageBunshin = new List<AIBehaviour>();
         // Randomizers
+        public bool isHit;
         float r_movestop, r_speed;
         float minMovestop = 0.1f; float maxMovestop = 5;
         float minSpeed = 0.15f; float maxSpeed = 1f;
@@ -30,6 +31,7 @@ namespace UnityStandardAssets._2D
 
         void Start()
         {
+            isHit = false;
             r_movestop = Random.Range(minMovestop, maxMovestop); // the cooldown between two moves
             r_speed = Random.Range(minSpeed, maxSpeed);    // the speed when moving the next time
         }
@@ -37,6 +39,10 @@ namespace UnityStandardAssets._2D
         Vector2 collisionPoint, collisionNorm;//Debug
         void Update()
         {
+            if (m_NPC.isHit)
+            {
+                Death();
+            }
             if (r_movestop <= 0) // Resets random values (cooldown/speed/orientation)
             {
                 if (!obstacleReached)
@@ -93,6 +99,11 @@ namespace UnityStandardAssets._2D
             float _x = v.x * Mathf.Cos(radian) - v.y * Mathf.Sin(radian);
             float _y = v.x * Mathf.Sin(radian) + v.y * Mathf.Cos(radian);
             return new Vector2(_x, _y);
+        }
+
+        public void Death()
+        {
+            Destroy(gameObject);
         }
 
         private void OnDestroy()

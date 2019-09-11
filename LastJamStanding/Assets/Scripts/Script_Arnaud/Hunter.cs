@@ -101,24 +101,37 @@ public class Hunter : MonoBehaviour
         Debug.Log("Pan!");
        
         Ray ray = new Ray(transform.position, Vector3.back*1000);
+
+        Physics.Raycast(ray, out RaycastHit hit, 1000);
+
         
-        Physics.Raycast(ray,out RaycastHit hit, 1000);
 
         Debug.Log(ray.origin);
         Debug.Log(ray.direction);
         Debug.DrawLine(transform.position, Vector3.forward, Color.red, 9999999);
+        if (hit.collider.gameObject.transform.parent.gameObject.layer == 8){
+        
+            if (hit.collider.gameObject.transform.parent.gameObject.tag == "Prey")
+            {
+                Debug.Log("Bam t'es mort");
+                GameManager.Instance.Switch(this, hit.collider.GetComponentInParent<UserControl>());
+            }
 
-        if (hit.collider.gameObject.transform.parent.gameObject.tag == "Prey")
-        {
-            Debug.Log("Bam t'es mort");
-            GameManager.Instance.Switch(this, hit.collider.GetComponentInParent<UserControl>());
+            if (hit.collider.gameObject.transform.parent.gameObject.tag != "Prey")
+            {
+
+                hit.collider.GetComponentInParent<Character2D>().isHit = true;
+                numTimeMissed++;
+                canShoot = false;
+            }
         }
 
-        if (hit.collider.gameObject.transform.parent.gameObject.tag != "Prey")
+        else
         {
             numTimeMissed++;
             canShoot = false;
         }
+       
 
         
 

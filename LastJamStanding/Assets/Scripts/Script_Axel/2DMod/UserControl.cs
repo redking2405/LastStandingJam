@@ -15,6 +15,9 @@ namespace UnityStandardAssets._2D
         [SerializeField] private int playerID;
         public float spawnCooldown = 1;
         public float currentTimeCooldown = 0;
+        public float vibrationTime;
+        public float vibrationIntensity;
+        
         public int GetPlayerID()
         {
             return playerID;
@@ -66,6 +69,15 @@ namespace UnityStandardAssets._2D
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
                 ResetSpawnCooldown();
             }
+        }
+
+
+        public void Vibrate()
+        {
+
+            int motorIndex=1;
+
+            player.SetVibration(motorIndex, vibrationIntensity, vibrationTime);
         }
 
         public void Respawn()
