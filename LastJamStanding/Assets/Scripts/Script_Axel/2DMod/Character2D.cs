@@ -25,8 +25,7 @@ namespace UnityStandardAssets._2D
         }
         public void Start()
         {
-                GetComponent<SpriteRenderer>().color = Color.red;
-            //StartCoroutine("FadeIn");
+            StartCoroutine("FadeIn");
 
         }
         public int SetColor(int i)
@@ -62,12 +61,10 @@ namespace UnityStandardAssets._2D
             Color c = Color.white; 
             while (transitionTime < 1)
             {
-                Debug.Log(transitionTime);
-                Debug.Log(c);
-                c = new Color(c.r, c.g, c.b, 1-transitionTime);
-                GetComponent<SpriteRenderer>().color = Color.red;
-                transitionTime += Time.fixedDeltaTime;
-                yield return new WaitForFixedUpdate();
+                c = new Color(c.r, c.g, c.b, transitionTime);
+                sprite.color = c;
+                transitionTime += 0.1f;
+                yield return new WaitForSeconds(0.1f);
             }
 
         }

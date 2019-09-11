@@ -379,6 +379,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
+      propertyPath: _userData.players.Array.data[2]._defaultKeyboardMaps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.players.Array.data[3]._defaultKeyboardMaps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
       propertyPath: _userData.configVars.platformVars_windowsStandalone.disableKeyboard
       value: 0
       objectReference: {fileID: 0}
@@ -462,8 +472,58 @@ PrefabInstance:
       propertyPath: _userData.configVars.platformVars_webGL.disableKeyboard
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.players.Array.data[2]._defaultKeyboardMaps.Array.data[0]._enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.players.Array.data[2]._defaultKeyboardMaps.Array.data[0]._categoryId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.players.Array.data[3]._defaultKeyboardMaps.Array.data[0]._enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.players.Array.data[3]._defaultKeyboardMaps.Array.data[0]._categoryId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c38848481572d8a4c999b8c12d097527, type: 3}
+--- !u!1 &1169402639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1804685835}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1169402640}
+  m_Layer: 0
+  m_Name: Canvas (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1169402640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1804685835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169402639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1202813906
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +880,7 @@ PrefabInstance:
     - target: {fileID: 6784549854278980949, guid: 8fc25b8122365c740bde9816a44d866a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6784549854278980949, guid: 8fc25b8122365c740bde9816a44d866a,
         type: 3}
