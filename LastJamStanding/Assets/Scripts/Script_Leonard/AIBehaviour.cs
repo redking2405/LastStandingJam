@@ -9,7 +9,7 @@ namespace UnityStandardAssets._2D
     public class AIBehaviour : MonoBehaviour
     {
         private Character2D m_NPC;
-
+        public static List<AIBehaviour> kageBunshin = new List<AIBehaviour>();
         // Randomizers
         float r_movestop, r_speed;
         float minMovestop = 0.1f; float maxMovestop = 5;
@@ -25,6 +25,7 @@ namespace UnityStandardAssets._2D
         private void Awake()
         {
             m_NPC = GetComponent<Character2D>();
+            kageBunshin.Add(this);
         }
 
         void Start()
@@ -92,6 +93,11 @@ namespace UnityStandardAssets._2D
             float _x = v.x * Mathf.Cos(radian) - v.y * Mathf.Sin(radian);
             float _y = v.x * Mathf.Sin(radian) + v.y * Mathf.Cos(radian);
             return new Vector2(_x, _y);
+        }
+
+        private void OnDestroy()
+        {
+            kageBunshin.Remove(this);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Rewired;
+using Random = UnityEngine.Random;
 
 namespace UnityStandardAssets._2D
 {
@@ -65,6 +66,17 @@ namespace UnityStandardAssets._2D
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
                 ResetSpawnCooldown();
             }
+        }
+
+        public void Respawn()
+        {
+            int ranIndex = Mathf.RoundToInt(Random.Range(0, AIBehaviour.kageBunshin.Count));
+
+            transform.position = AIBehaviour.kageBunshin[ranIndex].transform.position;
+            int color = AIBehaviour.kageBunshin[ranIndex].GetComponent<Character2D>().currentColor;
+            ChangeColor(color);
+            Destroy(AIBehaviour.kageBunshin[ranIndex]);
+
         }
         void ResetSpawnCooldown()
         {
