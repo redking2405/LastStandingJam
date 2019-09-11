@@ -26,6 +26,10 @@ public class Timer : Singleton<Timer>
 
         UpdateTimer(time);
 
+        if (time <= 0)
+        {
+            timer.text="La proie a gagné vous êtes des chasseurs de merde, bande de tocards!";
+        }
 
     }
 
