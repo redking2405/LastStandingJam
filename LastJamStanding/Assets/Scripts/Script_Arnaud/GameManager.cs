@@ -14,7 +14,10 @@ public class GameManager : Singleton<GameManager>
     public GameObject nPcClone, playerClone;
     [SerializeField]
     private RuntimeAnimatorController[] npcAnimatorControllers;
-
+    public int maxCloneCount = 30;
+    public int currentCloneCount = 0;
+    public const int startSpawnCloneCount = 15;
+    public GameObject[] clones;
     private void Awake()
     {
         ReInput.ControllerConnectedEvent += OnControllerConnected;
@@ -57,7 +60,7 @@ public class GameManager : Singleton<GameManager>
 
     void InstantiateCrowd()
     {
-        int count = 100;
+        int count = startSpawnCloneCount;
         int yMax = (int)Camera.main.orthographicSize, xMax = (int)(Camera.main.aspect * yMax);
         nPcClone.transform.position = new Vector2(xMax, yMax);
         for (int i = 0; i < count; i++)
@@ -73,6 +76,21 @@ public class GameManager : Singleton<GameManager>
         RuntimeAnimatorController animatorController = npcAnimatorControllers[animationControllerID];
         newClone.GetComponent<Animator>().runtimeAnimatorController = animatorController;
         newClone.GetComponent<Character2D>().currentColor = animationControllerID;
+        currentCloneCount++;
+        if (maxCloneCount < currentCloneCount)
+        {
+            int randomArrayId = Random.Range(0, currentCloneCount);
+            Destroy(clones[randomArrayId]);
+            currentCloneCount--;
+            clones[randomArrayId] = newClone;
+        }
+        else
+        {
+            GameObject[] tempArray = clones;
+            clones = new GameObject[currentCloneCount];
+            tempArray.CopyTo(clones, 0);
+            clones[currentCloneCount - 1] = newClone;
+        }
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
     }
