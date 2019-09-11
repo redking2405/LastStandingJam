@@ -18,6 +18,12 @@ public class GameManager : Singleton<GameManager>
     public int currentCloneCount = 0;
     public const int startSpawnCloneCount = 15;
     public GameObject[] clones;
+
+    // scene collider
+    private EdgeCollider2D edges;
+    private Vector2[] newVerticies = new Vector2[5];
+    private float screenXmax, screenYmax;
+
     private void Awake()
     {
         ReInput.ControllerConnectedEvent += OnControllerConnected;
@@ -28,6 +34,17 @@ public class GameManager : Singleton<GameManager>
 
             AssignJoystickToNextOpenPlayer(j);
         }
+
+        // Setting up edges points
+        edges = gameObject.AddComponent<EdgeCollider2D>();
+        screenYmax = Camera.main.orthographicSize;
+        screenXmax = Camera.main.aspect * screenYmax;
+        newVerticies[0] = new Vector2(screenXmax, screenYmax);
+        newVerticies[1] = new Vector2(-screenXmax, screenYmax);
+        newVerticies[2] = new Vector2(-screenXmax, -screenYmax);
+        newVerticies[3] = new Vector2(screenXmax, -screenYmax);
+        newVerticies[4] = new Vector2(screenXmax, screenYmax);
+        edges.points = newVerticies;
     }
     public RuntimeAnimatorController GetAnimatorController(int i)
     {
@@ -61,11 +78,10 @@ public class GameManager : Singleton<GameManager>
     void InstantiateCrowd()
     {
         int count = startSpawnCloneCount;
-        int yMax = (int)Camera.main.orthographicSize, xMax = (int)(Camera.main.aspect * yMax);
-        nPcClone.transform.position = new Vector2(xMax, yMax);
+        nPcClone.transform.position = new Vector2(screenXmax, screenYmax);
         for (int i = 0; i < count; i++)
         {
-            Vector2 r_Postition = new Vector2(Random.Range(-xMax, xMax), Random.Range(-yMax, yMax));
+            Vector2 r_Postition = new Vector2(Random.Range((int)-screenXmax, (int)screenXmax), Random.Range((int)-screenYmax, (int)screenYmax));
             InstantiateClone(r_Postition, Random.Range(0, 2) == 0, Random.Range(0, 4));
         }
     }
