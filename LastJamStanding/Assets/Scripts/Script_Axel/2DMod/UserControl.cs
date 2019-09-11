@@ -12,6 +12,8 @@ namespace UnityStandardAssets._2D
         public GameObject prefab;
         public GameObject instance;
         [SerializeField] private int playerID;
+        public float spawnCooldown = 1;
+        public float currentTimeCooldown = 0;
         public int GetPlayerID()
         {
             return playerID;
@@ -41,27 +43,36 @@ namespace UnityStandardAssets._2D
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
-            
+            if (currentTimeCooldown > 0) { currentTimeCooldown -= Time.fixedDeltaTime; }
             m_Character.Move(h.magnitude,h);
-            if (player.GetButtonDown("CloneVert"))
+            if (player.GetButtonDown("CloneVert") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position,GetComponent<Character2D>().m_FacingRight, 1);
+                ResetSpawnCooldown();
             }
-            if (player.GetButtonDown("CloneJaune"))
+            if (player.GetButtonDown("CloneJaune") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 3);
-
+                ResetSpawnCooldown();
             }
-            if (player.GetButtonDown("CloneBleu"))
+            if (player.GetButtonDown("CloneBleu") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 0);
-
+                ResetSpawnCooldown();
             }
-            if (player.GetButtonDown("CloneRouge"))
+            if (player.GetButtonDown("CloneRouge") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
-
+                ResetSpawnCooldown();
             }
+        }
+        void ResetSpawnCooldown()
+        {
+            currentTimeCooldown = spawnCooldown;
+        }
+        public void ChangeColor(int i)
+        {
+            m_Character.SetColor(i);
         }
     }
 }

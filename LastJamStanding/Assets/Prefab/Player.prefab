@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: e3ad3bb51dc0b4e40bbd66ee3e3bc364, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,11 +102,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_Rigidbody2D: {fileID: 0}
+  m_FacingRight: 1
   currentColor: 0
-  yellow: {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
   blue: {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
-  red: {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
   green: {fileID: 22100000, guid: 49d4a3984639d244ba21c341f72c090c, type: 2}
+  red: {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
+  yellow: {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
 --- !u!114 &7752539305854824772
 MonoBehaviour:
   m_ObjectHideFlags: 0

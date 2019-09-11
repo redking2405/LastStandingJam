@@ -26,7 +26,10 @@ public class GameManager : Singleton<GameManager>
             AssignJoystickToNextOpenPlayer(j);
         }
     }
-
+    public RuntimeAnimatorController GetAnimatorController(int i)
+    {
+        return npcAnimatorControllers[i];
+    }
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
     {
         if (args.controllerType != ControllerType.Joystick) return; // skip if this isn't a Joystick
@@ -69,6 +72,7 @@ public class GameManager : Singleton<GameManager>
         var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
         RuntimeAnimatorController animatorController = npcAnimatorControllers[animationControllerID];
         newClone.GetComponent<Animator>().runtimeAnimatorController = animatorController;
+        newClone.GetComponent<Character2D>().currentColor = animationControllerID;
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
     }

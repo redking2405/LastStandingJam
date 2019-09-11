@@ -14,7 +14,6 @@ namespace UnityStandardAssets._2D
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
         public bool m_FacingRight = true;  // For determining which way the player is currently facing.
         public int currentColor = 3;
-        public RuntimeAnimatorController blue, green, red, yellow;
         private void Awake()
         {
             // Setting up references.
@@ -25,20 +24,11 @@ namespace UnityStandardAssets._2D
         {
             switch(i)
             {
-                case 0:
-                    m_Anim.runtimeAnimatorController = blue;
-                    return currentColor = i;
-                case 1:
-                    m_Anim.runtimeAnimatorController = green;
-                    return currentColor = i;
-                case 2:
-                    m_Anim.runtimeAnimatorController = red;
-                    return currentColor = i;
-                case 3:
-                    m_Anim.runtimeAnimatorController = yellow;
+                case int n when n >= 0 && n <=3:
+                    m_Anim.runtimeAnimatorController = GameManager.Instance.GetAnimatorController(i);
                     return currentColor = i;
                 default:
-                    m_Anim.runtimeAnimatorController = yellow;
+                    m_Anim.runtimeAnimatorController = GameManager.Instance.GetAnimatorController(3);
                     return currentColor = 3;
             };
 
