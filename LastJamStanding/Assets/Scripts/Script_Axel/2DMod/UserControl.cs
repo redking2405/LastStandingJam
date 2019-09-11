@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace UnityStandardAssets._2D
 {
     [RequireComponent(typeof (Character2D))]
-    public class UserControl : MonoBehaviour
+    public class UserControl : Singleton<UserControl>
     {
         private Character2D m_Character;
         public Player player;

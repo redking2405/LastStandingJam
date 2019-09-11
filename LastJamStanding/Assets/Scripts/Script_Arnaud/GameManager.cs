@@ -91,6 +91,7 @@ public class GameManager : Singleton<GameManager>
         //Player preyPlayer = prey.player;
         hunter.SetPlayerID(preyID);
         prey.SetPlayerID(hunterID);
+        UserControl.Instance.Respawn();
         Timer.Instance.RestartTimer();
 
     }
