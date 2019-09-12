@@ -43,34 +43,13 @@ namespace UnityStandardAssets._2D
         {
             // Read the inputs.
             //Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-            Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
+            Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"), player.GetAxis("Move Verticaly"));
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
             if (currentTimeCooldown > 0) { currentTimeCooldown -= Time.fixedDeltaTime; }
-            m_Character.Move(h.magnitude,h);
-            if (player.GetButtonDown("CloneVert") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position,GetComponent<Character2D>().m_FacingRight, 1);
-                ResetSpawnCooldown();
-            }
-            if (player.GetButtonDown("CloneJaune") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 3);
-                ResetSpawnCooldown();
-            }
-            if (player.GetButtonDown("CloneBleu") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 0);
-                ResetSpawnCooldown();
-            }
-            if (player.GetButtonDown("CloneRouge") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
-                ResetSpawnCooldown();
-            }
+            m_Character.Move(h.magnitude, h);
         }
-
 
         public void Vibrate()
         {
@@ -88,9 +67,9 @@ namespace UnityStandardAssets._2D
         {
             currentTimeCooldown = spawnCooldown;
         }
-        public void ChangeColor(int i)
+       /* public void ChangeColor(int i)
         {
             m_Character.SetColor(i);
-        }
+        }*/
     }
 }

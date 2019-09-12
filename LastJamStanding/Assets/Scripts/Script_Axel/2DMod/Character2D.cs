@@ -28,9 +28,9 @@ namespace UnityStandardAssets._2D
             StartCoroutine("FadeIn");
 
         }
-        public int SetColor(int i)
+       /* public int SetColor(int i)
         {
-            switch(i)
+            /*switch(i)
             {
                 case int n when n >= 0 && n <=3:
                     m_Anim.runtimeAnimatorController = GameManager.Instance.GetAnimatorController(i);
@@ -40,7 +40,7 @@ namespace UnityStandardAssets._2D
                     return currentColor = 3;
             };
 
-        }
+        }*/
         private void FixedUpdate()
         {
             // Set the vertical animation
