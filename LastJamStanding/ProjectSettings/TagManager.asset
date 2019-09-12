@@ -7,6 +7,8 @@ TagManager:
   - Hunter
   - Prey
   - Wall
+  - Weapon
+  - unusable
   layers:
   - Default
   - TransparentFX

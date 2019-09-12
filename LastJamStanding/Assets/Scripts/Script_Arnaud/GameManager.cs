@@ -121,8 +121,11 @@ public class GameManager : Singleton<GameManager>
     public void InstantiateWeapon()
     {
         GameObject weaponI = new GameObject("weapon", typeof(SpriteRenderer));
+        weaponI.tag = "Weapon";
         weaponI.GetComponent<SpriteRenderer>().sprite = wp_Sprites[Random.Range(0, wp_Sprites.Length)];
         weaponI.AddComponent(typeof(PolygonCollider2D));
+        weaponI.GetComponent<PolygonCollider2D>().isTrigger = true;
+        weaponI.AddComponent<WeaponAttack>();
     }
 
     public void RemoveJoystickFromPlayer(Player player1, Player player2)

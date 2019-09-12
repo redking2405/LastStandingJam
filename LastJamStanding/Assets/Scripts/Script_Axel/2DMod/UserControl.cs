@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Rewired;
 using Random = UnityEngine.Random;
@@ -13,7 +14,7 @@ namespace UnityStandardAssets._2D
         public GameObject prefab;
         public GameObject instance;
         private GameObject attachedWeapon;
-        private Coroutine attackCoroutine = null;
+        private IEnumerator attackCoroutine = null;
         [SerializeField] private int playerID;
         public float attackCooldown = 1;
         public float currentTimeCooldown = 0;
@@ -29,13 +30,14 @@ namespace UnityStandardAssets._2D
         {
             playerID = newID;
             player = ReInput.players.GetPlayer(playerID);
-            attachedWeapon = GetComponentInChildren<WeaponAttack>().gameObject;
         }
         private void Awake()
         {
             player = ReInput.players.GetPlayer(playerID);
 
             m_Character = GetComponent<Character2D>();
+
+            attachedWeapon = GetComponentInChildren<WeaponAttack>().gameObject;
         }
 
         private void Start()
@@ -50,7 +52,8 @@ namespace UnityStandardAssets._2D
             m_Character.Move(h.magnitude,h);
             if (player.GetButtonDown("PlayerAttack") && currentTimeCooldown <= 0)
             {
-                attackCoroutine = attachedWeapon.GetComponent<WeaponAttack>().StartCoroutine("Attack");
+                attackCoroutine = attachedWeapon.GetComponent<WeaponAttack>().Attack(m_Character.sweepCurve);
+                StartCoroutine(attackCoroutine);
                 ResetAttackCooldown();
             }
             m_Character.Move(h.magnitude, h);
@@ -73,15 +76,40 @@ namespace UnityStandardAssets._2D
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("weapon")) // exchange weapon
+            if (collision.CompareTag("Weapon"))
             {
-                if (attackCoroutine != null)
-                    StopCoroutine(attackCoroutine);
-                Vector2 weaponAnchor = attachedWeapon.transform.localPosition;
-                attachedWeapon.transform.parent = transform.parent;
-                attachedWeapon = collision.gameObject;
-                attachedWeapon.transform.parent = transform;
-                attachedWeapon.transform.localPosition = weaponAnchor;
+                if (collision.transform.parent == null) // exchange weapon if on the floor
+                {
+                    if (attackCoroutine != null)
+                    {
+                        StopCoroutine(attackCoroutine);
+                        attackCoroutine = null;
+                    }
+                    // Dropping weapon on the floor
+                    Vector2 weaponAnchor = attachedWeapon.transform.localPosition;
+                    attachedWeapon.transform.parent = null;
+                    attachedWeapon.tag = "unusable";
+                    attachedWeapon.GetComponent<Collider2D>().enabled = true;
+
+                    // Picking up the other weapon on the floor
+                    attachedWeapon = collision.gameObject;
+                    attachedWeapon.transform.parent = transform;
+                    attachedWeapon.transform.localPosition = weaponAnchor;
+                    attachedWeapon.GetComponent<Collider2D>().enabled = false;
+                }
+                else if (collision.transform.parent != transform) // death
+                {
+                    //attachedWeapon.transform.parent = null;
+                    Respawn();
+                    //attachedWeapon.GetComponent<Collider2D>().enabled = true;
+                }
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("unusable"))
+            {
+                collision.tag = "Weapon";
             }
         }
     }

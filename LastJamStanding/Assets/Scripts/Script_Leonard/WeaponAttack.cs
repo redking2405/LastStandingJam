@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class WeaponAttack : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+    float animSpeed = 4;
 
-    public IEnumerator Attack()
+    public IEnumerator Attack(AnimationCurve weaponAnim)
     {
-        float timer = 5;
-        while(timer > 0)
+        Collider2D polyCol = GetComponent<Collider2D>();
+        polyCol.enabled = true;
+
+        float timer = 1;
+
+        while (timer > 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(90, 0, timer / 5));
-            timer -= Time.fixedDeltaTime;
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(45, 0, weaponAnim.Evaluate(timer)));
+            timer -= Time.fixedDeltaTime * animSpeed;
             yield return new WaitForFixedUpdate();
         }
-        while(timer < 5)
+        while(timer < 1)
         {
-            transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(90, 0, timer / 5));
-            timer += Time.fixedDeltaTime;
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(45, -45, weaponAnim.Evaluate(timer)));
+            timer += Time.fixedDeltaTime * animSpeed;
             yield return new WaitForFixedUpdate();
         }
+        while (timer > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Lerp(0, -45, weaponAnim.Evaluate(timer)));
+            timer -= Time.fixedDeltaTime * animSpeed;
+            yield return new WaitForFixedUpdate();
+        }
+
+        polyCol.enabled = false;
     }
 }

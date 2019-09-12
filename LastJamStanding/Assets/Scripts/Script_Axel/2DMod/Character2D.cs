@@ -15,6 +15,8 @@ namespace UnityStandardAssets._2D
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
         public bool m_FacingRight = true;  // For determining which way the player is currently facing.
         public int currentColor = 3;
+        public AnimationCurve sweepCurve; // weapon attack curve
+
         private void Awake()
         {
             // Setting up references.
