@@ -6,12 +6,9 @@ using UnityStandardAssets._2D;
 
 public class GameManager : Singleton<GameManager>
 {
-
-    public Hunter player1;
-    public Hunter player2;
     private Player player;
 
-    public GameObject nPcClone, playerClone;
+    public GameObject nPcClone, player1, player2, player3, player4;
     [SerializeField]
     private RuntimeAnimatorController[] npcAnimatorControllers;
     public int maxCloneCount = 30;
