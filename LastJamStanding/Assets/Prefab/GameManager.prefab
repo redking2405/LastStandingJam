@@ -43,20 +43,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83cea4a71271434eb244465130e0fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nPcClone: {fileID: 4689283968627667888, guid: 502703b8743ace54487ebeddc8f3b7fb,
-    type: 3}
-  player1: {fileID: 7752539305854824763, guid: 5a94c8158e74d0340a49964fc8685c33, type: 3}
-  player2: {fileID: 7752539305854824763, guid: bdc8e0dd3c5f5f84f900d7f0633a8afc, type: 3}
-  player3: {fileID: 7752539305854824763, guid: 2f3982574450cc74899588283c2e9ab6, type: 3}
-  player4: {fileID: 7752539305854824763, guid: 786c20e28e0e58b4e9e277f226e3d6eb, type: 3}
-  npcAnimatorControllers:
-  - {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
-  - {fileID: 0}
-  - {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
-  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
-  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
-  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
-  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
+  nPCs: []
   maxCloneCount: 30
   currentCloneCount: 0
+  startSpawnCloneCount: 0
   clones: []
+  wp_Sprites:
+  - {fileID: 21300000, guid: 7a9b9eef38e34254c9a1306b6cd29f34, type: 3}
+  - {fileID: 21300000, guid: e2f10b4ec57e76d4ca8d4e05acae9711, type: 3}
+  - {fileID: 21300000, guid: 9ab22218c86054744a32050600dc628f, type: 3}
+  - {fileID: 21300000, guid: cf0e9c99f0868de4a97c4dc357ad1df5, type: 3}
+  - {fileID: 21300000, guid: 1c7194d60e8fce64b88006dadc6332ad, type: 3}
+  - {fileID: 21300000, guid: 2a198e02c7594d64bb3fbb04557f3c31, type: 3}
+  - {fileID: 21300000, guid: 0746aa91d1ede2a49baa8016c60b96a9, type: 3}
+  - {fileID: 21300000, guid: e6f54b17eaf41d841b69b797c1cab8b7, type: 3}
+  screenXmax: 0
+  screenYmax: 0

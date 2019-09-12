@@ -59,7 +59,7 @@ namespace UnityStandardAssets._2D
             float transitionTime = 0;
             SpriteRenderer sprite = GetComponent<SpriteRenderer>();
             Color c = Color.white; 
-            while (transitionTime < 1)
+            while (transitionTime < 1.1)
             {
                 c = new Color(c.r, c.g, c.b, transitionTime);
                 sprite.color = c;

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4689283968627667888, guid: 502703b8743ace54487ebeddc8f3b7fb, type: 3}
   instance: {fileID: 0}
-  playerID: 1
+  playerID: 0
   attackCooldown: 1
   currentTimeCooldown: 0
   vibrationTime: 0

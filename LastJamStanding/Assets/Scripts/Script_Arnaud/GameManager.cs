@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     public int currentCloneCount = 0;
     public int startSpawnCloneCount;
     public GameObject[] clones;
+    public Sprite[] wp_Sprites;
 
     // scene collider
     private EdgeCollider2D edges;
@@ -67,6 +68,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         InstantiateCrowd();
+        InstantiateWeapon();
     }
 
 
@@ -114,6 +116,13 @@ public class GameManager : Singleton<GameManager>
         }
         if (!isRight)
             newClone.GetComponent<Character2D>().Flip();
+    }
+
+    public void InstantiateWeapon()
+    {
+        GameObject weaponI = new GameObject("weapon", typeof(SpriteRenderer));
+        weaponI.GetComponent<SpriteRenderer>().sprite = wp_Sprites[Random.Range(0, wp_Sprites.Length)];
+        weaponI.AddComponent(typeof(PolygonCollider2D));
     }
 
     public void RemoveJoystickFromPlayer(Player player1, Player player2)

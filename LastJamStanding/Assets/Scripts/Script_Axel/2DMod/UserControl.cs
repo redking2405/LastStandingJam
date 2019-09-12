@@ -38,7 +38,7 @@ namespace UnityStandardAssets._2D
             m_Character = GetComponent<Character2D>();
         }
 
-        private void Update()
+        private void Start()
         {
         }
 
