@@ -12,8 +12,10 @@ namespace UnityStandardAssets._2D
         public Player player;
         public GameObject prefab;
         public GameObject instance;
+        private GameObject attachedWeapon;
+        private Coroutine attackCoroutine = null;
         [SerializeField] private int playerID;
-        public float spawnCooldown = 1;
+        public float attackCooldown = 1;
         public float currentTimeCooldown = 0;
         public float vibrationTime;
         public float vibrationIntensity;
@@ -27,6 +29,7 @@ namespace UnityStandardAssets._2D
         {
             playerID = newID;
             player = ReInput.players.GetPlayer(playerID);
+            attachedWeapon = GetComponentInChildren<WeaponAttack>().gameObject;
         }
         private void Awake()
         {
@@ -49,34 +52,17 @@ namespace UnityStandardAssets._2D
             // m_Character.Move(h);
             if (currentTimeCooldown > 0) { currentTimeCooldown -= Time.fixedDeltaTime; }
             m_Character.Move(h.magnitude,h);
-            if (player.GetButtonDown("CloneVert") && currentTimeCooldown <= 0)
+            if (player.GetButtonDown("PlayerAttack") && currentTimeCooldown <= 0)
             {
-                GameManager.Instance.InstantiateClone(transform.position,GetComponent<Character2D>().m_FacingRight, 1);
-                ResetSpawnCooldown();
-            }
-            if (player.GetButtonDown("CloneJaune") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 3);
-                ResetSpawnCooldown();
-            }
-            if (player.GetButtonDown("CloneBleu") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 0);
-                ResetSpawnCooldown();
-            }
-            if (player.GetButtonDown("CloneRouge") && currentTimeCooldown <= 0)
-            {
-                GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
-                ResetSpawnCooldown();
+                attackCoroutine = attachedWeapon.GetComponent<WeaponAttack>().StartCoroutine("Attack");
+                ResetAttackCooldown();
             }
         }
 
 
         public void Vibrate()
         {
-
             int motorIndex=1;
-
             player.SetVibration(motorIndex, vibrationIntensity, vibrationTime);
         }
 
@@ -84,13 +70,27 @@ namespace UnityStandardAssets._2D
         {
             transform.position = new Vector2((int)Random.Range(-GameManager.Instance.screenXmax, GameManager.Instance.screenXmax), (int)Random.Range(-GameManager.Instance.screenYmax, GameManager.Instance.screenYmax));
         }
-        void ResetSpawnCooldown()
+        void ResetAttackCooldown()
         {
-            currentTimeCooldown = spawnCooldown;
+            currentTimeCooldown = attackCooldown;
         }
         public void ChangeColor(int i)
         {
             m_Character.SetColor(i);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("weapon")) // exchange weapon
+            {
+                if (attackCoroutine != null)
+                    StopCoroutine(attackCoroutine);
+                Vector2 weaponAnchor = attachedWeapon.transform.localPosition;
+                attachedWeapon.transform.parent = transform.parent;
+                attachedWeapon = collision.gameObject;
+                attachedWeapon.transform.parent = transform;
+                attachedWeapon.transform.localPosition = weaponAnchor;
+            }
         }
     }
 }
