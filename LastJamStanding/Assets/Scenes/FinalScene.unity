@@ -197,6 +197,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 8976404508655049737, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1522534052}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5, type: 3}
 --- !u!1001 &137547160
@@ -269,6 +274,11 @@ PrefabInstance:
     - target: {fileID: 7752539305854824774, guid: 5a94c8158e74d0340a49964fc8685c33,
         type: 3}
       propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7752539305854824772, guid: 5a94c8158e74d0340a49964fc8685c33,
+        type: 3}
+      propertyPath: playerID
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7752539305854824770, guid: 5a94c8158e74d0340a49964fc8685c33,
@@ -815,243 +825,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultKeyboardMaps.Array.size
+      propertyPath: _userData.actionCategories.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultKeyboardMaps.Array.size
+      propertyPath: _userData.actionCategoryMap.list.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.mouseMaps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.mouseMaps.Array.data[0].actionElementMaps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._defaultMouseMaps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultMouseMaps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultMouseMaps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultKeyboardMaps.Array.data[0]._enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultKeyboardMaps.Array.data[0]._categoryId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultKeyboardMaps.Array.data[0]._enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultKeyboardMaps.Array.data[0]._categoryId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_windowsStandalone.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_linuxStandalone.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_osxStandalone.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_windows8Store.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_windowsUWP.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_iOS.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_tvOS.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_android.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_ps3.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_ps4.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_psVita.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_xbox360.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_xboxOne.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_wii.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_wiiu.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_switch.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.platformVars_webGL.disableKeyboard
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.mouseMaps.Array.data[0].categoryId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.mouseMapIdCounter
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.mouseMaps.Array.data[0].actionElementMaps.Array.data[0]._actionId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.mouseMaps.Array.data[0].actionElementMaps.Array.data[0]._elementType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.mouseMaps.Array.data[0].actionElementMaps.Array.data[0]._elementIdentifierId
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._defaultMouseMaps.Array.data[0]._enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._defaultMouseMaps.Array.data[0]._categoryId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultMouseMaps.Array.data[0]._enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultMouseMaps.Array.data[0]._categoryId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultMouseMaps.Array.data[0]._enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultMouseMaps.Array.data[0]._categoryId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._assignMouseOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._assignMouseOnStart
+      propertyPath: _userData.configVars.runInEditMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.players.Array.data[2]._assignMouseOnStart
+      propertyPath: _userData.actionCategories.Array.data[1]._name
+      value: Category0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.actionCategories.Array.data[1]._descriptiveName
+      value: Category0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.actionCategories.Array.data[1]._id
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.players.Array.data[1]._assignKeyboardOnStart
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.activateActionButtonsOnNegativeValue
+      propertyPath: _userData.actionCategories.Array.data[1]._userAssignable
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[3].actionElementMaps.Array.data[9]._actionId
+      propertyPath: _userData.actionCategoryMap.list.Array.data[1].categoryId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
+        type: 3}
+      propertyPath: _userData.actionCategoryIdCounter
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[3].actionElementMaps.Array.data[11]._actionId
-      value: 3
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[0]._enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[2].actionElementMaps.Array.data[4]._actionId
-      value: 2
+      propertyPath: _userData.players.Array.data[2]._defaultJoystickMaps.Array.data[1]._enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.joystickMaps.Array.data[2].actionElementMaps.Array.data[5]._actionId
-      value: 3
+      propertyPath: _userData.players.Array.data[3]._defaultJoystickMaps.Array.data[0]._enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c38848481572d8a4c999b8c12d097527, type: 3}
@@ -1263,6 +1093,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter
       objectReference: {fileID: 0}
+    - target: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
+        type: 3}
+      propertyPath: playerID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4834437683143311029, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1328,5 +1163,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8976404508655049737, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1522534052}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5, type: 3}

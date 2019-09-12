@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using UnityStandardAssets._2D;
-
+using UnityEngine.EventSystems;
 public class GameManager : Singleton<GameManager>
 {
-
+    public enum GameMode
+    {
+        Prey,
+        Hunter
+    }
     public Hunter player1;
     public Hunter player2;
     private Player player;
-
+    public GameMode currentGameMode;
     public GameObject nPcClone, playerClone;
     [SerializeField]
     private RuntimeAnimatorController[] npcAnimatorControllers;
@@ -19,6 +23,12 @@ public class GameManager : Singleton<GameManager>
     public const int startSpawnCloneCount = 15;
     public GameObject[] clones;
 
+    public IEnumerable<ControllerMap> maps;
+    // A dictionary to look up the Map Category from the GameMode
+    static Dictionary<GameMode, string> gameModeToMapCategory = new Dictionary<GameMode, string>() {
+         { GameMode.Prey, "Prey" },
+         { GameMode.Hunter, "Hunter" },
+    };
     // scene collider
     private EdgeCollider2D edges;
     private Vector2[] newVerticies = new Vector2[5];
@@ -125,8 +135,26 @@ public class GameManager : Singleton<GameManager>
         //Player preyPlayer = prey.player;
         hunter.SetPlayerID(preyID);
         prey.SetPlayerID(hunterID);
+
+        ChangeGameMode(GameMode.Hunter, hunter.player);
+        ChangeGameMode(GameMode.Prey, prey.player);
+
         UserControl.Instance.Respawn();
         Timer.Instance.RestartTimer();
+
+    }
+    public void ChangeGameMode(GameMode mode,Player p)
+    {
+        currentGameMode = mode; // store the new game mode
+        SetControllerMapsForCurrentGameMode(p); // enable the correct Controller Maps for the game mode
+    }
+      void SetControllerMapsForCurrentGameMode(Player p)
+    {
+        // Disable all controller maps first for all controllers of all types
+        p.controllers.maps.SetAllMapsEnabled(false);
+
+        // Enable maps for the current game mode for all controlllers of all types
+        p.controllers.maps.SetMapsEnabled(true, gameModeToMapCategory[currentGameMode]);
 
     }
 }
