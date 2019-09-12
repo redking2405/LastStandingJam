@@ -7,6 +7,7 @@ TagManager:
   - Hunter
   - Prey
   - Wall
+  - Walk
   layers:
   - Default
   - TransparentFX

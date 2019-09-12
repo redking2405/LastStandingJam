@@ -15,18 +15,33 @@ namespace UnityStandardAssets._2D
         [SerializeField] private Rigidbody2D m_Rigidbody2D;
         public bool m_FacingRight = true;  // For determining which way the player is currently facing.
         public int currentColor = 3;
+        public AudioClip[] moops;
+        public AudioSource moopSource;
+        public AudioSource walkSource;
         private void Awake()
         {
             // Setting up references.
             isHit = false;
             m_Anim = GetComponent<Animator>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
+            //walkSource = GameObject.FindGameObjectWithTag("Walk").GetComponent<AudioSource>();
 
         }
         public void Start()
         {
             StartCoroutine("FadeIn");
-
+        }
+        public void PlayMoop()
+        {
+            moopSource.PlayOneShot(moops[UnityEngine.Random.Range(0, moops.Length - 1)]);
+        }
+        public void PlayWalk()
+        {
+            walkSource.Play();
+        }
+        public void StopWalk()
+        {
+            walkSource.Stop();
         }
         public int SetColor(int i)
         {
@@ -51,6 +66,10 @@ namespace UnityStandardAssets._2D
             else if (m_Rigidbody2D.velocity.magnitude < 0.1f && m_Anim.GetBool("Moving") == true)
             {
                 m_Anim.SetBool("Moving", false);
+            }
+            if(m_Rigidbody2D.velocity.magnitude > 0.1f && !walkSource.isPlaying)
+            {
+                PlayWalk();
             }
         }
 
@@ -92,6 +111,7 @@ namespace UnityStandardAssets._2D
         public void TriggerDeath()
         {
             m_Anim.SetTrigger("Death");
+            PlayMoop();
         }
         private void LateUpdate()
         {

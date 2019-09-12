@@ -24,6 +24,9 @@ public class Hunter : MonoBehaviour
     GameObject target;
     SpriteRenderer sprite;
     public GameObject impact;
+    public AudioSource shootSource;
+    public AudioSource missSource;
+    
     public int GetPlayerID()
     {
         return playerID;
@@ -180,7 +183,7 @@ public class Hunter : MonoBehaviour
     public void Shoot()
     {
         Debug.Log("Pan!");
-
+        shootSource.PlayOneShot(shootSource.clip,0.1f);
         /*Ray ray = new Ray(transform.position, Vector3.back*1000);
 
         Physics.Raycast(ray, out RaycastHit hit, 1000);
@@ -190,7 +193,7 @@ public class Hunter : MonoBehaviour
         Debug.Log(ray.origin);
         Debug.Log(ray.direction);
         Debug.DrawLine(transform.position, Vector3.forward, Color.red, 9999999);*/
-        
+
         Instantiate(impact, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)),null);
         if (targetClone)
         {
@@ -209,6 +212,7 @@ public class Hunter : MonoBehaviour
         
        if(!targetPrey && !targetClone)
         {
+            missSource.Play();
             numTimeMissed++;
             canShoot = false;
             StartCoroutine(Reload());
