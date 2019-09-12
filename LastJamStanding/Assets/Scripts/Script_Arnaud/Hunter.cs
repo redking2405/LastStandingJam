@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using UnityStandardAssets._2D;
+using UnityEngine.UI;
 public class Hunter : MonoBehaviour
 {
 
@@ -17,11 +18,12 @@ public class Hunter : MonoBehaviour
     public bool isAiming;
     public Player player;
     [SerializeField] private int playerID;
-    bool targetPrey;
-    bool targetClone;
+    [SerializeField] bool targetPrey;
+    [SerializeField] bool targetClone;
     bool targetNothing;
     GameObject target;
     SpriteRenderer sprite;
+    public GameObject impact;
     public int GetPlayerID()
     {
         return playerID;
@@ -39,10 +41,11 @@ public class Hunter : MonoBehaviour
     public float baseTimeForReload;
     Color alpha;
     Color original;
-
+    public Image imgReload;
 
     private void Awake()
     {
+        imgReload = transform.GetChild(0).GetChild(0).GetComponent<Image>();
         player = ReInput.players.GetPlayer(playerID);
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -74,8 +77,10 @@ public class Hunter : MonoBehaviour
             canShoot = false;
             StartCoroutine(WaitForBreath());
         }
-        timeMoving -= Time.deltaTime;
-
+        if (canShoot)
+        {
+            timeMoving -= Time.deltaTime;
+        }
         if(canShoot && player.GetButtonDown("Fire"))
         {
             Shoot();
@@ -110,20 +115,48 @@ public class Hunter : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            target = collision.gameObject;
+
             if (collision.gameObject.tag == "Prey")
             {
                 targetPrey = true;
                 target = collision.gameObject;
             }
 
-            else targetClone = true;
+            else
+            {
+                if (!targetPrey)
+                {
+                    target = collision.gameObject;
+                }
+                targetClone = true;
+            }
         }
     }
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            if (target == null)
+            {
+                if (collision.gameObject.tag == "Prey")
+                {
+                    targetPrey = true;
+                    target = collision.gameObject;
+                }
+                else
+                {
+                    if (!targetPrey)
+                    {
+                        target = collision.gameObject;
+                    }
+                    targetClone = true;
+                }
+            }
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        target = collision.gameObject;
+        
         if (collision.gameObject.layer == 8)
         {
             if (collision.gameObject.tag == "Prey")
@@ -133,23 +166,32 @@ public class Hunter : MonoBehaviour
 
             }
 
-            else targetClone = false;
+            else
+            {
+                if (!targetPrey && collision.gameObject == target)
+                {
+                    target = null;
+                }
+                targetClone = false;
+            }
         }
     }
 
     public void Shoot()
     {
         Debug.Log("Pan!");
-       
+
         /*Ray ray = new Ray(transform.position, Vector3.back*1000);
 
         Physics.Raycast(ray, out RaycastHit hit, 1000);
 
-        
+       
 
         Debug.Log(ray.origin);
         Debug.Log(ray.direction);
         Debug.DrawLine(transform.position, Vector3.forward, Color.red, 9999999);*/
+        
+        Instantiate(impact, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)),null);
         if (targetClone)
         {
             target.GetComponent<AIBehaviour>().Death();
@@ -179,7 +221,16 @@ public class Hunter : MonoBehaviour
     
     IEnumerator Reload()
     {
-        yield return new WaitForSeconds(numTimeMissed * baseTimeForReload);
+        float t = 0;
+        while (t < numTimeMissed * baseTimeForReload)
+        {
+
+            imgReload.fillAmount = t / (numTimeMissed * baseTimeForReload);
+            t += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        imgReload.fillAmount = 0;
+        timeMoving = originalTimeMoving;
         canShoot = true;
     }
 
