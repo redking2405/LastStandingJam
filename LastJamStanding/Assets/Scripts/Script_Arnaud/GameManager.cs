@@ -8,12 +8,12 @@ public class GameManager : Singleton<GameManager>
 {
     private Player player;
 
-    public GameObject nPcClone, player1, player2, player3, player4;
-    [SerializeField]
-    private RuntimeAnimatorController[] npcAnimatorControllers;
+    public GameObject  player1, player2, player3, player4;
+    public GameObject[] nPCs;
+   
     public int maxCloneCount = 30;
     public int currentCloneCount = 0;
-    public const int startSpawnCloneCount = 15;
+    public int startSpawnCloneCount;
     public GameObject[] clones;
 
     // scene collider
@@ -43,10 +43,7 @@ public class GameManager : Singleton<GameManager>
         newVerticies[4] = new Vector2(screenXmax, screenYmax);
         edges.points = newVerticies;
     }
-    public RuntimeAnimatorController GetAnimatorController(int i)
-    {
-        return npcAnimatorControllers[i];
-    }
+   
     void OnControllerConnected(ControllerStatusChangedEventArgs args)
     {
         if (args.controllerType != ControllerType.Joystick) return; // skip if this isn't a Joystick
@@ -72,23 +69,34 @@ public class GameManager : Singleton<GameManager>
         InstantiateCrowd();
     }
 
-    void InstantiateCrowd()
+
+    private void Update()
     {
-        int count = startSpawnCloneCount;
-        nPcClone.transform.position = new Vector2(screenXmax, screenYmax);
-        for (int i = 0; i < count; i++)
+        if (currentCloneCount != startSpawnCloneCount)
         {
+            int ranNum = Mathf.RoundToInt(Random.Range(0, nPCs.Length));
             Vector2 r_Postition = new Vector2(Random.Range((int)-screenXmax, (int)screenXmax), Random.Range((int)-screenYmax, (int)screenYmax));
-            InstantiateClone(r_Postition, Random.Range(0, 2) == 0, Random.Range(0, 4));
+            InstantiateClone(nPCs[ranNum], r_Postition, Random.Range(0, 2) == 0);
         }
     }
 
-    public void InstantiateClone(Vector2 position, bool isRight, int animationControllerID)
+
+    void InstantiateCrowd()
     {
-        var newClone = Instantiate(nPcClone, position, Quaternion.identity, transform);
-        RuntimeAnimatorController animatorController = npcAnimatorControllers[animationControllerID];
-        newClone.GetComponent<Animator>().runtimeAnimatorController = animatorController;
-        newClone.GetComponent<Character2D>().currentColor = animationControllerID;
+        int count = startSpawnCloneCount;
+        //nPcClone.transform.position = new Vector2(screenXmax, screenYmax);
+        for (int i = 0; i < count; i++)
+        {
+            int ranNum = Mathf.RoundToInt(Random.Range(0, nPCs.Length));
+            Vector2 r_Postition = new Vector2(Random.Range((int)-screenXmax, (int)screenXmax), Random.Range((int)-screenYmax, (int)screenYmax));
+            InstantiateClone(nPCs[ranNum], r_Postition, Random.Range(0, 2) == 0);
+        }
+    }
+
+    public void InstantiateClone(GameObject kid, Vector2 position, bool isRight)
+    {
+        var newClone = Instantiate(kid, position, Quaternion.identity, transform);
+        
         currentCloneCount++;
         if (maxCloneCount < currentCloneCount)
         {

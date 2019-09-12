@@ -45,11 +45,7 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            //Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-            Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
-            //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
-            // Pass all parameters to the character control script.
-            // m_Character.Move(h);
+            Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"), player.GetAxis("Move Verticaly"));
             if (currentTimeCooldown > 0) { currentTimeCooldown -= Time.fixedDeltaTime; }
             m_Character.Move(h.magnitude,h);
             if (player.GetButtonDown("PlayerAttack") && currentTimeCooldown <= 0)
@@ -57,8 +53,8 @@ namespace UnityStandardAssets._2D
                 attackCoroutine = attachedWeapon.GetComponent<WeaponAttack>().StartCoroutine("Attack");
                 ResetAttackCooldown();
             }
+            m_Character.Move(h.magnitude, h);
         }
-
 
         public void Vibrate()
         {
@@ -73,10 +69,6 @@ namespace UnityStandardAssets._2D
         void ResetAttackCooldown()
         {
             currentTimeCooldown = attackCooldown;
-        }
-        public void ChangeColor(int i)
-        {
-            m_Character.SetColor(i);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
