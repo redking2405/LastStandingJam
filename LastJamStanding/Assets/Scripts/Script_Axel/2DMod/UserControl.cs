@@ -67,7 +67,7 @@ namespace UnityStandardAssets._2D
 
         public void Respawn()
         {
-            transform.position = new Vector2((int)Random.Range(-GameManager.Instance.screenXmax, GameManager.Instance.screenXmax), (int)Random.Range(-GameManager.Instance.screenYmax, GameManager.Instance.screenYmax));
+            transform.position = GameManager.Instance.respawnPoints[Random.Range(0, GameManager.Instance.respawnPoints.Length)];
         }
         void ResetAttackCooldown()
         {

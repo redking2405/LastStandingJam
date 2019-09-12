@@ -61,5 +61,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2a198e02c7594d64bb3fbb04557f3c31, type: 3}
   - {fileID: 21300000, guid: 0746aa91d1ede2a49baa8016c60b96a9, type: 3}
   - {fileID: 21300000, guid: e6f54b17eaf41d841b69b797c1cab8b7, type: 3}
+  respawnPoints:
+  - {x: -6, y: 3}
+  - {x: 6, y: 3}
+  - {x: 0, y: 0}
+  - {x: -7, y: -1}
+  - {x: 7, y: -1}
+  - {x: -7, y: -4}
+  - {x: 0, y: -4}
+  - {x: 6, y: -4}
   screenXmax: 0
   screenYmax: 0

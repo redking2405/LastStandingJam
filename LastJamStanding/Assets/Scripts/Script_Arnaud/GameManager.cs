@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
     public int startSpawnCloneCount;
     public GameObject[] clones;
     public Sprite[] wp_Sprites;
+    public Vector2[] respawnPoints;
 
     // scene collider
     private EdgeCollider2D edges;

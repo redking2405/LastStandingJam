@@ -79,6 +79,8 @@ namespace UnityStandardAssets._2D
             direction.Normalize();
             Vector2 nextVelocity = new Vector2(direction.x * move * m_MaxSpeed, direction.y * move * m_MaxSpeed);
             m_Rigidbody2D.velocity = nextVelocity;
+            if ((nextVelocity.x <= -0.2f && m_FacingRight) || (nextVelocity.x >= 0.2f && !m_FacingRight))
+                Flip();
         }
 
         public void Flip()
