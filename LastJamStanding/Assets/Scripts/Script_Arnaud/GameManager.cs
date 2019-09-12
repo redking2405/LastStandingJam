@@ -69,6 +69,18 @@ public class GameManager : Singleton<GameManager>
         InstantiateCrowd();
     }
 
+
+    private void Update()
+    {
+        if (currentCloneCount != startSpawnCloneCount)
+        {
+            int ranNum = Mathf.RoundToInt(Random.Range(0, nPCs.Length));
+            Vector2 r_Postition = new Vector2(Random.Range((int)-screenXmax, (int)screenXmax), Random.Range((int)-screenYmax, (int)screenYmax));
+            InstantiateClone(nPCs[ranNum], r_Postition, Random.Range(0, 2) == 0);
+        }
+    }
+
+
     void InstantiateCrowd()
     {
         int count = startSpawnCloneCount;
