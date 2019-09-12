@@ -82,13 +82,7 @@ namespace UnityStandardAssets._2D
 
         public void Respawn()
         {
-            int ranIndex = Mathf.RoundToInt(Random.Range(0, AIBehaviour.kageBunshin.Count));
-
-            transform.position = AIBehaviour.kageBunshin[ranIndex].transform.position;
-            int color = AIBehaviour.kageBunshin[ranIndex].GetComponent<Character2D>().currentColor;
-            ChangeColor(color);
-            Destroy(AIBehaviour.kageBunshin[ranIndex]);
-
+            transform.position = new Vector2((int)Random.Range(-GameManager.Instance.screenXmax, GameManager.Instance.screenXmax), (int)Random.Range(-GameManager.Instance.screenYmax, GameManager.Instance.screenYmax));
         }
         void ResetSpawnCooldown()
         {

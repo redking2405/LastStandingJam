@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     // scene collider
     private EdgeCollider2D edges;
     private Vector2[] newVerticies = new Vector2[5];
-    private float screenXmax, screenYmax;
+    public float screenXmax, screenYmax;
 
     private void Awake()
     {
@@ -111,19 +111,5 @@ public class GameManager : Singleton<GameManager>
     public void RemoveJoystickFromPlayer(Player player1, Player player2)
     {
         //player1.controllers;
-    }
-   
-
-    public void Switch(Hunter hunter, UserControl prey)
-    {
-        int hunterID = hunter.GetPlayerID();
-        int preyID = prey.GetPlayerID();
-        //Player hunterPlayer = hunter.player;
-        //Player preyPlayer = prey.player;
-        hunter.SetPlayerID(preyID);
-        prey.SetPlayerID(hunterID);
-        UserControl.Instance.Respawn();
-        Timer.Instance.RestartTimer();
-
     }
 }
