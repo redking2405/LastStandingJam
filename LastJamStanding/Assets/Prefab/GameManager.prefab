@@ -43,14 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83cea4a71271434eb244465130e0fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 0}
-  player2: {fileID: 0}
   nPcClone: {fileID: 4689283968627667888, guid: 502703b8743ace54487ebeddc8f3b7fb,
     type: 3}
-  playerClone: {fileID: 7752539305854824763, guid: 5a94c8158e74d0340a49964fc8685c33,
-    type: 3}
+  player1: {fileID: 7752539305854824763, guid: 5a94c8158e74d0340a49964fc8685c33, type: 3}
+  player2: {fileID: 7752539305854824763, guid: bdc8e0dd3c5f5f84f900d7f0633a8afc, type: 3}
+  player3: {fileID: 7752539305854824763, guid: 2f3982574450cc74899588283c2e9ab6, type: 3}
+  player4: {fileID: 7752539305854824763, guid: 786c20e28e0e58b4e9e277f226e3d6eb, type: 3}
   npcAnimatorControllers:
   - {fileID: 22100000, guid: fbce61fd5576c4e4fbeb2c9537ab182f, type: 2}
-  - {fileID: 22100000, guid: 49d4a3984639d244ba21c341f72c090c, type: 2}
+  - {fileID: 0}
   - {fileID: 22100000, guid: 7a14f85ad031af24d84a633de6d32462, type: 2}
   - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+  - {fileID: 9100000, guid: 45d70d2ea9f3ac5468ce798334360922, type: 2}
+  maxCloneCount: 30
+  currentCloneCount: 0
+  clones: []
