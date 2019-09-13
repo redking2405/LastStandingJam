@@ -315,7 +315,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 40f6c6649b692a746a337d6102f1d305, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -442,7 +442,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c5e6b9e9bdaf8a94ebc2ef68f7c26ee5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -527,6 +527,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &422176043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7531865231724375892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05cb9da9502998f4a8d82295d0061c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &457463166
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +581,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7075eb7067e835143be6143b11646c48, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -654,6 +666,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &526154919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 122315655}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05cb9da9502998f4a8d82295d0061c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &733565207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -771,6 +795,21 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9126317162302234071, guid: fce05221ff45c734a9796353ef49ff39,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 422176043}
+    - target: {fileID: 9126317162302234071, guid: fce05221ff45c734a9796353ef49ff39,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 526154919}
+    - target: {fileID: 9126317162302234071, guid: fce05221ff45c734a9796353ef49ff39,
+        type: 3}
+      propertyPath: prey
+      value: 
+      objectReference: {fileID: 1950101249}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce05221ff45c734a9796353ef49ff39, type: 3}
 --- !u!1 &752815754
@@ -1001,7 +1040,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 217dc32ad3347b147b3edae3a1b76488, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1352,66 +1391,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.actionCategories.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.actionCategoryMap.list.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.configVars.runInEditMode
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[0]._enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
-      propertyPath: _userData.actionCategories.Array.data[1]._name
-      value: Category0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.actionCategories.Array.data[1]._descriptiveName
-      value: Category0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.actionCategories.Array.data[1]._id
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.actionCategories.Array.data[1]._userAssignable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.actionCategoryMap.list.Array.data[1].categoryId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.actionCategoryIdCounter
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[0]._enabled
-      value: 1
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[1]._enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
       propertyPath: _userData.players.Array.data[2]._defaultJoystickMaps.Array.data[1]._enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
         type: 3}
       propertyPath: _userData.players.Array.data[3]._defaultJoystickMaps.Array.data[0]._enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c38848481572d8a4c999b8c12d097527, type: 3}
+--- !u!114 &1950101249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7752539305854824772, guid: 5a94c8158e74d0340a49964fc8685c33,
+    type: 3}
+  m_PrefabInstance: {fileID: 137547160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9cd1eba0e20204db6e669d865c2a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2071489593
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ namespace UnityStandardAssets._2D
         public float vibrationTime;
         public float vibrationIntensity;
         bool canVibrate;
-        public bool isReady;
+        public bool restart;
         public GameObject impact;
        AudioSource[] moops;
         public int GetPlayerID()
@@ -47,6 +47,15 @@ namespace UnityStandardAssets._2D
             {
                 Vibrate();
             }
+            if (player.GetButtonDown("Restart"))
+            {
+                restart = true;
+            }
+
+            if (player.GetButtonUp("Restart"))
+            {
+                restart = false;
+            }
         }
 
         private void FixedUpdate()
@@ -54,7 +63,7 @@ namespace UnityStandardAssets._2D
             // Read the inputs.
             //Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
             Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
-            int ranNum = Random.Range(0, moops.Length);
+            //int ranNum = Random.Range(0, moops.Length);
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
@@ -63,25 +72,29 @@ namespace UnityStandardAssets._2D
             if (player.GetButtonDown("CloneVert") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position,GetComponent<Character2D>().m_FacingRight, 1);
+                m_Character.PlayMoop();
                 ResetSpawnCooldown();
             }
             if (player.GetButtonDown("CloneJaune") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 3);
+                m_Character.PlayMoop();
                 ResetSpawnCooldown();
             }
             if (player.GetButtonDown("CloneBleu") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 0);
+                m_Character.PlayMoop();
                 ResetSpawnCooldown();
             }
             if (player.GetButtonDown("CloneRouge") && currentTimeCooldown <= 0)
             {
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
+                m_Character.PlayMoop();
                 ResetSpawnCooldown();
             }
 
-            m_Character.PlayMoop();
+           
         }
 
 

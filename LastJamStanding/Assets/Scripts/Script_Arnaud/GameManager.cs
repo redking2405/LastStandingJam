@@ -147,6 +147,16 @@ public class GameManager : Singleton<GameManager>
         Timer.Instance.RestartTimer();
 
     }
+
+
+    public void Restart()
+    {
+        for(int i=0; i<AIBehaviour.kageBunshin.Count; i++)
+        {
+            Destroy(AIBehaviour.kageBunshin[i].gameObject);
+            
+        }
+    }
     public void ChangeGameMode(GameMode mode,Player p)
     {
         currentGameMode = mode; // store the new game mode

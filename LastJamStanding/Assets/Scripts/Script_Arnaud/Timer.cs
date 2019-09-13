@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityStandardAssets._2D;
+using UnityEngine.SceneManagement;
 public class Timer : Singleton<Timer>
 {
     public Text timer;
     public float startTimer;
-    float time;
+    public float time;
+    public Hunter player2;
+    public Hunter player;
+    public UserControl prey;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +32,14 @@ public class Timer : Singleton<Timer>
 
         if (time <= 0)
         {
-            timer.text="La proie a gagné vous êtes des chasseurs de merde, bande de tocards!";
+            GameManager.Instance.Restart();
+            timer.text="Press Start to Restart";
         }
 
+        if(player.restart || prey.restart || player2.restart && time <= 0)
+        {
+            SceneManager.LoadScene("FinalScene");
+        }
     }
 
     void UpdateTimer(float time)

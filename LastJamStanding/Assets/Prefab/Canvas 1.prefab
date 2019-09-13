@@ -94,6 +94,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 9126317162302233897}
   startTimer: 45
+  time: 0
+  player2: {fileID: 0}
+  player: {fileID: 0}
+  prey: {fileID: 0}
 --- !u!1 &9126317163989021715
 GameObject:
   m_ObjectHideFlags: 0

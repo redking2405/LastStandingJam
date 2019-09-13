@@ -25,7 +25,7 @@ public class Hunter : MonoBehaviour
     List<GameObject> impacts = new List<GameObject>();
     public AudioSource shootSource;
     public AudioSource missSource;
-    public bool isReady;
+    public bool restart;
     public int GetPlayerID()
     {
         return playerID;
@@ -121,7 +121,15 @@ public class Hunter : MonoBehaviour
         }
         else isAiming = false;
 
-        
+        if (player.GetButtonDown("Restart"))
+        {
+            restart = true;
+        }
+
+        if (player.GetButtonUp("Restart"))
+        {
+            restart = false;
+        }
     }
 
 
