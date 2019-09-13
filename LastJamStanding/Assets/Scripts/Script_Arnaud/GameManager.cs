@@ -32,7 +32,7 @@ public class GameManager : Singleton<GameManager>
     // scene collider
     private EdgeCollider2D edges;
     private Vector2[] newVerticies = new Vector2[5];
-    private float screenXmax, screenYmax;
+    public float screenXmax, screenYmax;
 
     private void Awake()
     {

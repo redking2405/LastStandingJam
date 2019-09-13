@@ -231,7 +231,7 @@ MonoBehaviour:
   timeStopping: 2
   aimingFactor: 0.5
   isAiming: 0
-  playerID: 0
+  playerID: 1
   targetPrey: 0
   targetClone: 0
   impact: {fileID: 6537135498446015009, guid: bcc4e2c297b2675469787aa942de2121, type: 3}

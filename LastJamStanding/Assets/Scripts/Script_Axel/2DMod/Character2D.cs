@@ -1,4 +1,4 @@
-using System;
+//using System;
 using UnityEngine;
 using System.Collections;
 
@@ -29,6 +29,8 @@ namespace UnityStandardAssets._2D
         }
         public void Start()
         {
+            if (tag == "Prey")
+                transform.position = new Vector2(Random.Range((int)-GameManager.Instance.screenXmax, (int)GameManager.Instance.screenXmax), Random.Range((int)-GameManager.Instance.screenYmax, (int)GameManager.Instance.screenYmax));
             StartCoroutine("FadeIn");
         }
         public void PlayMoop()

@@ -6,8 +6,6 @@ using UnityStandardAssets._2D;
 using UnityEngine.UI;
 public class Hunter : MonoBehaviour
 {
-
-
     public float speed;
     public float timeMoving;
     private float originalTimeMoving;
@@ -76,8 +74,6 @@ public class Hunter : MonoBehaviour
     {
         if (timeMoving <= 0 && canMove)
         {
-            canMove = false;
-            canShoot = false;
             StartCoroutine(WaitForBreath());
         }
         if (canShoot)
@@ -184,6 +180,7 @@ public class Hunter : MonoBehaviour
     {
         Debug.Log("Pan!");
         shootSource.PlayOneShot(shootSource.clip,0.1f);
+        StartCoroutine("ShootCoroutine");
         /*Ray ray = new Ray(transform.position, Vector3.back*1000);
 
         Physics.Raycast(ray, out RaycastHit hit, 1000);
@@ -211,17 +208,39 @@ public class Hunter : MonoBehaviour
         }
         
        if(!targetPrey && !targetClone)
-        {
+       {
             missSource.Play();
             numTimeMissed++;
             canShoot = false;
             StartCoroutine(Reload());
-        }
+       }
 
     }
 
-    
-
+    IEnumerator ShootCoroutine()
+    {
+        float timerLength = 0.2f;
+        float timer = timerLength;
+        Vector2 originalScale = transform.localScale;
+        Vector2 swelledScale = transform.localScale * 1.25f;
+        
+        while (timer > 0)
+        {
+            transform.localScale = Vector2.Lerp(swelledScale, originalScale, timer / timerLength);
+            timer -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        transform.localScale = swelledScale;
+        timerLength = 0.5f;
+        timer = timerLength;
+        while (timer > 0)
+        {
+            transform.localScale = Vector2.Lerp(originalScale, swelledScale, timer / timerLength);
+            timer -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+        transform.localScale = originalScale;
+    }
     
     IEnumerator Reload()
     {
@@ -240,10 +259,11 @@ public class Hunter : MonoBehaviour
 
     IEnumerator WaitForBreath()
     {
-
+        //canMove = false;
+        canShoot = false;
         yield return new WaitForSeconds(timeStopping);
         canShoot = true;
-        canMove = true;
+        //canMove = true;
         timeMoving = originalTimeMoving;
     }
 

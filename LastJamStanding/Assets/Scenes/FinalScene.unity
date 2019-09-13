@@ -132,11 +132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
-        type: 3}
-      propertyPath: playerID
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4834437683143311029, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -274,11 +269,6 @@ PrefabInstance:
     - target: {fileID: 7752539305854824774, guid: 5a94c8158e74d0340a49964fc8685c33,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7752539305854824772, guid: 5a94c8158e74d0340a49964fc8685c33,
-        type: 3}
-      propertyPath: playerID
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7752539305854824770, guid: 5a94c8158e74d0340a49964fc8685c33,
@@ -1092,11 +1082,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hunter
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
-        type: 3}
-      propertyPath: playerID
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4834437683143311029, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
         type: 3}
