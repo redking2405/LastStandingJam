@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 9126317162302233897}
-  startTimer: 45
+  startTimer: 60
 --- !u!1 &9126317163989021715
 GameObject:
   m_ObjectHideFlags: 0

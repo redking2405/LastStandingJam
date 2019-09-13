@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05cb9da9502998f4a8d82295d0061c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   timeMoving: 10
   timeStopping: 2
   aimingFactor: 0.5
@@ -240,7 +240,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
-  baseTimeForReload: 3
+  baseTimeForReload: 2
   imgReload: {fileID: 0}
 --- !u!95 &1057422425
 Animator:

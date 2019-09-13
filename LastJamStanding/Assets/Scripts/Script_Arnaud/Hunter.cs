@@ -245,10 +245,10 @@ public class Hunter : MonoBehaviour
     IEnumerator Reload()
     {
         float t = 0;
-        while (t < numTimeMissed * baseTimeForReload)
+        while (t < /*numTimeMissed * */ baseTimeForReload)
         {
 
-            imgReload.fillAmount = t / (numTimeMissed * baseTimeForReload);
+            imgReload.fillAmount = t / (/*numTimeMissed * */ baseTimeForReload);
             t += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
