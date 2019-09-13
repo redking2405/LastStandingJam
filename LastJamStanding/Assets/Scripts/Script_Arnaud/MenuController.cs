@@ -35,7 +35,7 @@ public class MenuController : MonoBehaviour
         SpriteRenderer renderer= GetComponent<SpriteRenderer>();
         Vector3 itemSize = renderer.bounds.size;
         float pixelPerUnit = renderer.sprite.pixelsPerUnit;
-        size = new Vector2(itemSize.x * pixelPerUnit, itemSize.y * pixelPerUnit);
+        size = new Vector2(itemSize.x, itemSize.y);
     }
 
     // Update is called once per frame
@@ -44,11 +44,9 @@ public class MenuController : MonoBehaviour
         if (player.GetButtonDown("Ready"))
         {
             Vector3 randonPos = center+new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), 0);
-            impacts.Add(Instantiate(impact, center, Quaternion.Euler(0, 0, Random.Range(0, 360)), null));
+            impacts.Add(Instantiate(impact, randonPos, Quaternion.Euler(0, 0, Random.Range(0, 360)), null));
             shootSource.Play();
             isReady = true;
-
-
         }
 
         if (player.GetButtonDown("Unready"))
