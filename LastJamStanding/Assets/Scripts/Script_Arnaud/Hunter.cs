@@ -22,9 +22,10 @@ public class Hunter : MonoBehaviour
     GameObject target;
     SpriteRenderer sprite;
     public GameObject impact;
+    List<GameObject> impacts = new List<GameObject>();
     public AudioSource shootSource;
     public AudioSource missSource;
-    
+    public bool isReady;
     public int GetPlayerID()
     {
         return playerID;
@@ -120,6 +121,7 @@ public class Hunter : MonoBehaviour
         }
         else isAiming = false;
 
+        
     }
 
 
