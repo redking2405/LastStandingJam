@@ -14,7 +14,7 @@ public class Title : MonoBehaviour
     }
     public AudioSource[] moops;
     public MenuController Prey, Hunter1, Hunter2;
-    public GameMode currentGameMode;
+    [HideInInspector]public GameMode currentGameMode;
     public IEnumerable<ControllerMap> maps;
     // A dictionary to look up the Map Category from the GameMode
     static Dictionary<GameMode, string> gameModeToMapCategory = new Dictionary<GameMode, string>() {
