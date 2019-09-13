@@ -1,7 +1,10 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using Rewired;
 using Random = UnityEngine.Random;
+
 
 namespace UnityStandardAssets._2D
 {
@@ -18,6 +21,9 @@ namespace UnityStandardAssets._2D
         public float vibrationTime;
         public float vibrationIntensity;
         bool canVibrate;
+        public bool isReady;
+        public GameObject impact;
+        List<GameObject> impacts = new List<GameObject>();
         public int GetPlayerID()
         {
             return playerID;
