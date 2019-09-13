@@ -19,7 +19,7 @@ public class Hunter : MonoBehaviour
     [SerializeField] bool targetPrey;
     [SerializeField] bool targetClone;
     bool targetNothing;
-    GameObject target;
+    public GameObject target;
     SpriteRenderer sprite;
     public GameObject impact;
     public AudioSource shootSource;
@@ -205,19 +205,21 @@ public class Hunter : MonoBehaviour
         Debug.DrawLine(transform.position, Vector3.forward, Color.red, 9999999);*/
 
         Instantiate(impact, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)),null);
-        if (targetClone)
+        if (/*targetClone &&*/target.GetComponent<AIBehaviour>() != null)
         {
             target.GetComponent<AIBehaviour>().Death();
             numTimeMissed++;
             canShoot = false;
             StartCoroutine(Reload());
+            return;
         }
 
-        if (targetPrey)
+        if (/*targetPrey &&*/ target.GetComponent<UserControl>() != null)
         {
             canShoot = false;
             GameManager.Instance.Switch(this, target.GetComponent<UserControl>());
             StartCoroutine(Reload());
+            return;
         }
         
        if(!targetPrey && !targetClone)
@@ -226,6 +228,7 @@ public class Hunter : MonoBehaviour
             numTimeMissed++;
             canShoot = false;
             StartCoroutine(Reload());
+            return;
        }
 
     }
@@ -259,10 +262,10 @@ public class Hunter : MonoBehaviour
     {
         float t = 0;
         float tM = timeMoving;
-        while (t < /*numTimeMissed * */ baseTimeForReload)
+        while (t < numTimeMissed * baseTimeForReload)
         {
             timeMoving = Mathf.Lerp(tM, originalTimeMoving, t / (numTimeMissed * baseTimeForReload));
-            imgReload.fillAmount = t / (/*numTimeMissed * */ baseTimeForReload);
+            imgReload.fillAmount = t / (numTimeMissed * baseTimeForReload);
             imgBreath.fillAmount = timeMoving / originalTimeMoving;
             t += 0.1f;
             yield return new WaitForSeconds(0.1f);

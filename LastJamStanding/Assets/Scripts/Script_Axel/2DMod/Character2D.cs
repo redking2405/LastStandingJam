@@ -35,7 +35,7 @@ namespace UnityStandardAssets._2D
         }
         public void PlayMoop()
         {
-            moopSource.PlayOneShot(moops[UnityEngine.Random.Range(0, moops.Length - 1)]);
+            moopSource.PlayOneShot(moops[UnityEngine.Random.Range(0, moops.Length)]);
         }
         public void PlayWalk()
         {
