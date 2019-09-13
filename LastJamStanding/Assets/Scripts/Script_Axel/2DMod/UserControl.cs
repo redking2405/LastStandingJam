@@ -17,7 +17,7 @@ namespace UnityStandardAssets._2D
         public float currentTimeCooldown = 0;
         public float vibrationTime;
         public float vibrationIntensity;
-        
+        bool canVibrate;
         public int GetPlayerID()
         {
             return playerID;
@@ -37,6 +37,10 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
+            if (canVibrate)
+            {
+                Vibrate();
+            }
         }
 
         private void FixedUpdate()
@@ -78,6 +82,24 @@ namespace UnityStandardAssets._2D
             int motorIndex=1;
 
             player.SetVibration(motorIndex, vibrationIntensity, vibrationTime);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.gameObject.tag == "Hunter")
+            {
+                canVibrate = true;
+            }
+
+
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.tag == "Hunter")
+            {
+                canVibrate = false;
+            }
         }
 
         public void Respawn()

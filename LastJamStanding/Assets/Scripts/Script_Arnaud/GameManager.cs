@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Rewired;
 using UnityStandardAssets._2D;
@@ -105,8 +106,11 @@ public class GameManager : Singleton<GameManager>
         currentCloneCount++;
         if (maxCloneCount < currentCloneCount)
         {
-            int randomArrayId = Random.Range(0, currentCloneCount);
-            clones[randomArrayId].GetComponent<AIBehaviour>().Death(); 
+            int randomArrayId = Random.Range(0, currentCloneCount-1);
+            if(clones[randomArrayId] != null)
+            {
+                clones[randomArrayId].GetComponent<AIBehaviour>().Death(); 
+            }
             currentCloneCount--;
             clones[randomArrayId] = newClone;
         }
