@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
 {
     private Player player;
 
-    public GameObject  player1, player2, player3, player4;
+    public GameObject[] players;
     public GameObject[] nPCs;
    
     public int maxCloneCount = 30;
@@ -69,7 +69,6 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         InstantiateCrowd();
-        InstantiateWeapon();
     }
 
 
@@ -91,7 +90,7 @@ public class GameManager : Singleton<GameManager>
         for (int i = 0; i < count; i++)
         {
             int ranNum = Mathf.RoundToInt(Random.Range(0, nPCs.Length));
-            Vector2 r_Postition = new Vector2(Random.Range((int)-screenXmax, (int)screenXmax), Random.Range((int)-screenYmax, (int)screenYmax));
+            Vector2 r_Postition = transform.position = respawnPoints[Random.Range(0, respawnPoints.Length)];
             InstantiateClone(nPCs[ranNum], r_Postition, Random.Range(0, 2) == 0);
         }
     }
@@ -119,10 +118,11 @@ public class GameManager : Singleton<GameManager>
             newClone.GetComponent<Character2D>().Flip();
     }
 
-    public void InstantiateWeapon()
+    public void InstantiateWeapon(Vector2 position)
     {
         GameObject weaponI = new GameObject("weapon", typeof(SpriteRenderer));
         weaponI.tag = "Weapon";
+        weaponI.transform.position = position;
         weaponI.GetComponent<SpriteRenderer>().sprite = wp_Sprites[Random.Range(0, wp_Sprites.Length)];
         weaponI.AddComponent(typeof(PolygonCollider2D));
         weaponI.GetComponent<PolygonCollider2D>().isTrigger = true;

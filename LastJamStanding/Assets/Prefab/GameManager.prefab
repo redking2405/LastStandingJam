@@ -47,7 +47,15 @@ MonoBehaviour:
   player2: {fileID: 0}
   player3: {fileID: 0}
   player4: {fileID: 0}
-  nPCs: []
+  nPCs:
+  - {fileID: 1472265395249703910, guid: ba5e3858b1ecca04c8bcc360643e12db, type: 3}
+  - {fileID: 7786810163497410592, guid: eb27cea706ceea247a92611026d7396c, type: 3}
+  - {fileID: 7822563765424536767, guid: c8d42182970e3144ca0ab46a0b6d87ac, type: 3}
+  - {fileID: 6571703968780236396, guid: d04323abc75b2d644b0f4c5ef8aba82d, type: 3}
+  - {fileID: 932669459722155888, guid: 12af5056ac75afb4390b77f2b3b346cd, type: 3}
+  - {fileID: 5600249136916731927, guid: a7b2d82bc6d6a1248bc2abaf0ac71a24, type: 3}
+  - {fileID: 133973862200585782, guid: 650021c0060b67d4fbc5ca8eef22c8bb, type: 3}
+  - {fileID: 1844131505047976772, guid: bf6384d92e1d00145bbdb7b68093183c, type: 3}
   maxCloneCount: 30
   currentCloneCount: 0
   startSpawnCloneCount: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets._2D;
 
 public class Timer : Singleton<Timer>
 {
@@ -28,7 +29,17 @@ public class Timer : Singleton<Timer>
 
         if (time <= 0)
         {
-            timer.text="La proie a gagné vous êtes des chasseurs de merde, bande de tocards!";
+            int biggestScore = 0;
+            string joueurWin = "noWin";
+            foreach (GameObject player in GameManager.Instance.players)
+            {
+                if (player.gameObject.GetComponent<UserControl>().score > biggestScore)
+                {
+                    biggestScore = player.gameObject.GetComponent<UserControl>().score;
+                    joueurWin = player.name;
+                }
+            }
+            timer.text = joueurWin + " a gagné avec " + biggestScore + " points !";
         }
 
     }

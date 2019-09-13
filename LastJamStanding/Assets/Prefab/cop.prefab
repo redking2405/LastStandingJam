@@ -148,6 +148,12 @@ MonoBehaviour:
   m_Rigidbody2D: {fileID: 0}
   m_FacingRight: 1
   currentColor: 3
+  sweepCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1472265395249703911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +181,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.02464455, y: -0.066290006}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -186,7 +192,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.48}
+  m_Size: {x: 0.27298522, y: 0.32702282}
   m_EdgeRadius: 0
 --- !u!114 &6100041865766853593
 MonoBehaviour:

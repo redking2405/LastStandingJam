@@ -4,24 +4,9 @@ using UnityEngine;
 
 public class Kid : MonoBehaviour
 {
-
     public int score;
     public GameObject Blood;
-    public GameObject Weapon;
     public float chanceOfWeapon;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     public void Death()
     {
@@ -30,9 +15,8 @@ public class Kid : MonoBehaviour
 
         if (ran > chanceOfWeapon)
         {
-            Instantiate(Weapon, transform.position, Quaternion.identity);
+            GameManager.Instance.InstantiateWeapon(transform.position);
         }
-
 
         Destroy(gameObject);
     }

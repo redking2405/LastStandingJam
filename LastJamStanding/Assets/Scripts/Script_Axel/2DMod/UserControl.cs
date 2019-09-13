@@ -20,6 +20,7 @@ namespace UnityStandardAssets._2D
         public float currentTimeCooldown = 0;
         public float vibrationTime;
         public float vibrationIntensity;
+        public int score = 0;
         
         public int GetPlayerID()
         {
@@ -68,6 +69,8 @@ namespace UnityStandardAssets._2D
         public void Respawn()
         {
             transform.position = GameManager.Instance.respawnPoints[Random.Range(0, GameManager.Instance.respawnPoints.Length)];
+            if (score != 0)
+                score--;
         }
         void ResetAttackCooldown()
         {
@@ -99,9 +102,10 @@ namespace UnityStandardAssets._2D
                 }
                 else if (collision.transform.parent != transform) // death
                 {
-                    //attachedWeapon.transform.parent = null;
+                    attachedWeapon.transform.parent = null;
                     Respawn();
-                    //attachedWeapon.GetComponent<Collider2D>().enabled = true;
+                    attachedWeapon.GetComponent<Collider2D>().enabled = true;
+                    collision.GetComponent<UserControl>().score += 2;
                 }
             }
         }
