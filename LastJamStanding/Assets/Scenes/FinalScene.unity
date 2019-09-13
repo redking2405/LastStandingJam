@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
+        type: 3}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4834437683143311029, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -197,11 +202,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1522534052}
-    - target: {fileID: 4834437683143311034, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5,
-        type: 3}
-      propertyPath: playerID
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22dec0cb8a88a0e4eb60c0d9df3fc5d5, type: 3}
 --- !u!1001 &137547160

@@ -23,7 +23,7 @@ namespace UnityStandardAssets._2D
         bool canVibrate;
         public bool isReady;
         public GameObject impact;
-        List<GameObject> impacts = new List<GameObject>();
+       AudioSource[] moops;
         public int GetPlayerID()
         {
             return playerID;
@@ -54,6 +54,7 @@ namespace UnityStandardAssets._2D
             // Read the inputs.
             //Vector2 h = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
             Vector2 h = new Vector2(player.GetAxis("Move Horizontaly"),player.GetAxis("Move Verticaly"));
+            int ranNum = Random.Range(0, moops.Length);
             //print(player.GetAxis2D("Move Horizontaly", "Move Verticaly"));
             // Pass all parameters to the character control script.
             // m_Character.Move(h);
@@ -79,6 +80,8 @@ namespace UnityStandardAssets._2D
                 GameManager.Instance.InstantiateClone(transform.position, GetComponent<Character2D>().m_FacingRight, 2);
                 ResetSpawnCooldown();
             }
+
+            moops[ranNum].Play();
         }
 
 
