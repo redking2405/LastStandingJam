@@ -80,6 +80,14 @@ namespace UnityStandardAssets._2D
             player.SetVibration(motorIndex, vibrationIntensity, vibrationTime);
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision.gameObject.tag == "Hunter")
+            {
+                Vibrate();
+            }
+        }
+
         public void Respawn()
         {
             int ranIndex = Mathf.RoundToInt(Random.Range(0, AIBehaviour.kageBunshin.Count));
