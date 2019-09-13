@@ -115,7 +115,7 @@ namespace UnityStandardAssets._2D
             transform.position = AIBehaviour.kageBunshin[ranIndex].transform.position;
             int color = AIBehaviour.kageBunshin[ranIndex].GetComponent<Character2D>().currentColor;
             ChangeColor(color);
-            Destroy(AIBehaviour.kageBunshin[ranIndex]);
+            Destroy(AIBehaviour.kageBunshin[ranIndex].gameObject);
 
         }
         void ResetSpawnCooldown()

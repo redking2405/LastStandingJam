@@ -234,7 +234,6 @@ public class Hunter : MonoBehaviour
             StartCoroutine(Reload());
             return;
        }
-
     }
 
     IEnumerator ShootCoroutine()
