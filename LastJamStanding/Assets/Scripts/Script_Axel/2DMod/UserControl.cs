@@ -81,7 +81,7 @@ namespace UnityStandardAssets._2D
                 ResetSpawnCooldown();
             }
 
-            moops[ranNum].Play();
+            m_Character.PlayMoop();
         }
 
 

@@ -386,8 +386,10 @@ MonoBehaviour:
   playerID: 0
   spawnCooldown: 1
   currentTimeCooldown: 0
-  vibrationTime: 0
-  vibrationIntensity: 0
+  vibrationTime: 0.5
+  vibrationIntensity: 0.5
+  isReady: 0
+  impact: {fileID: 0}
 --- !u!50 &7752539305854824768
 Rigidbody2D:
   serializedVersion: 4
