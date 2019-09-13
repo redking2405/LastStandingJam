@@ -1389,26 +1389,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[0]._enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[1]._enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[2]._defaultJoystickMaps.Array.data[1]._enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314156113273299432, guid: c38848481572d8a4c999b8c12d097527,
-        type: 3}
-      propertyPath: _userData.players.Array.data[3]._defaultJoystickMaps.Array.data[0]._enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c38848481572d8a4c999b8c12d097527, type: 3}
 --- !u!114 &1950101249 stripped
