@@ -43,10 +43,16 @@ public class Hunter : MonoBehaviour
     Color alpha;
     Color original;
     public Image imgReload;
-
+    public Image imgBreath;
+    public Color originalColor;
+    public Color breathColor;
     private void Awake()
     {
         imgReload = transform.GetChild(0).GetChild(0).GetComponent<Image>();
+        imgBreath = transform.GetChild(0).GetChild(1).GetComponent<Image>();
+        originalColor = imgBreath.color;
+        breathColor = new Color(originalColor.r, originalColor.g, originalColor.b, originalColor.a / 3);
+        imgBreath.color = breathColor;
         player = ReInput.players.GetPlayer(playerID);
         sprite = GetComponent<SpriteRenderer>();
     }
@@ -63,10 +69,10 @@ public class Hunter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
+        //if (canMove)
+        //{
             Move();
-        }
+        //}
     }
 
     // Update is called once per frame
@@ -74,13 +80,19 @@ public class Hunter : MonoBehaviour
     {
         if (timeMoving <= 0 && canMove)
         {
+            canMove = false;
+            canShoot = false;
             StartCoroutine(WaitForBreath());
         }
         if (canShoot)
         {
             timeMoving -= Time.deltaTime;
         }
-        if(canShoot && player.GetButtonDown("Fire"))
+        if (timeMoving > 0 && canMove)
+        {
+            imgBreath.fillAmount = timeMoving / originalTimeMoving;
+        }
+        if (canShoot && player.GetButtonDown("Fire"))
         {
             Shoot();
         }
@@ -245,25 +257,33 @@ public class Hunter : MonoBehaviour
     IEnumerator Reload()
     {
         float t = 0;
+        float tM = timeMoving;
         while (t < numTimeMissed * baseTimeForReload)
         {
-
+            timeMoving = Mathf.Lerp(tM, originalTimeMoving, t / (numTimeMissed * baseTimeForReload));
             imgReload.fillAmount = t / (numTimeMissed * baseTimeForReload);
+            imgBreath.fillAmount = timeMoving / originalTimeMoving;
             t += 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         imgReload.fillAmount = 0;
-        timeMoving = originalTimeMoving;
         canShoot = true;
     }
 
     IEnumerator WaitForBreath()
     {
-        //canMove = false;
-        canShoot = false;
-        yield return new WaitForSeconds(timeStopping);
+        imgBreath.color = originalColor;
+        float t = 0;
+        while (t < timeStopping)
+        {
+            imgBreath.fillAmount = t / timeStopping;
+            t += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        imgBreath.color = breathColor;
         canShoot = true;
-        //canMove = true;
+        canMove = true;
+
         timeMoving = originalTimeMoving;
     }
 

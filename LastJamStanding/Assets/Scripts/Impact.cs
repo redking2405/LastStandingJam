@@ -15,7 +15,7 @@ public class Impact : MonoBehaviour
         spriteRenderer.sprite = sprites[Random.Range(0, 3)];
         spriteRenderer.color = Color.clear;
         StartCoroutine("Spawn");
-        StartCoroutine("Despawn");
+        //StartCoroutine("Despawn");
     }
     IEnumerator Spawn()
     {
