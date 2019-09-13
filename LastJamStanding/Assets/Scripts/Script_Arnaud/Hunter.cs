@@ -88,7 +88,7 @@ public class Hunter : MonoBehaviour
         {
             timeMoving -= Time.deltaTime;
         }
-        if(canShoot && player.GetButtonDown("Fire"))
+
         if (timeMoving > 0 && canMove)
         {
             imgBreath.fillAmount = timeMoving / originalTimeMoving;
